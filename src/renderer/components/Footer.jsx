@@ -8,26 +8,31 @@ const Footer = () => {
 
   useEffect(() => {
     // Initial GPU info
-    window.api.getGPUInfo().then((info) => {
-      console.log('Attempting to fetch GPU info');
-      setGpuCount(info.gpuCount);
-      if (info.gpuInfo) {
-        setGpuStats(info.gpuInfo.map(gpu => ({
-          name: gpu.name,
-          utilizationGpu: gpu.utilizationGpu || 0,
-          memoryTotal: gpu.memoryTotal,
-          memoryUsed: gpu.memoryUsed || 0
-        })));
+    const fetchGpuInfo = async () => {
+      try {
+        const info = await window.api.getGPUInfo();
+        console.log('Fetched GPU info:', info);
+        
+        if (info) {
+          setGpuCount(info.gpuCount);
+          if (info.gpuInfo && info.gpuInfo.length > 0) {
+            setGpuStats(info.gpuInfo);
+          }
+        }
+      } catch (error) {
+        console.error('Error fetching GPU info:', error);
       }
-    });
-
-    // Subscribe to GPU updates
-    const unsubscribe = window.api.onGPUStatsUpdate((data) => {
-      setGpuStats(data);
-    });
-
+    };
+  
+    // Fetch initial data
+    fetchGpuInfo();
+    
+    // Set up polling interval (every 1 second)
+    const interval = setInterval(fetchGpuInfo, 1000);
+    
+    // Clean up interval on component unmount
     return () => {
-      if (unsubscribe) unsubscribe();
+      clearInterval(interval);
     };
   }, []);
 

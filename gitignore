@@ -1,0 +1,11 @@
+# Create or edit .gitignore file
+bin/LibreHardwareMonitorCLI/bin/Release/net6.0/win-x64/publish/LibreHabreHardwareMonitorCLI.exe
+# Add other large binary files
+bin/LibreHardwareMonitorCLI/bin/Release/
+bin/*/publish/
+*.exe
+# Common build outputs
+**/bin/
+**/obj/
+**/node_modules/
+**/dist/
