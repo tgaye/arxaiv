@@ -8,6 +8,7 @@ import PaperView from './PaperView';
 import ExploreView from './ExploreView';
 import Footer from './Footer';
 import SettingsDialog from './SettingsDialog';
+import VramWarningDialog from './VRamWarningDialog';
 
 const App = () => {
   const [conversations, setConversations] = useState([]);
@@ -21,11 +22,27 @@ const App = () => {
   const [currentPaper, setCurrentPaper] = useState(null);
   const [exploreContent, setExploreContent] = useState(null); // Store generated HTML
   const [isGeneratingHTML, setIsGeneratingHTML] = useState(false);
+  const [showVramWarning, setShowVramWarning] = useState(false);
+  const [vramWarningInfo, setVramWarningInfo] = useState(null);
+  const [isLoadingDefaultModel, setIsLoadingDefaultModel] = useState(false);
   
   useEffect(() => {
     const loadModels = async () => {
       const modelsList = await window.api.getModels();
       setModels(modelsList);
+      
+      // Check for default model
+      const defaultModel = modelsList.find(model => model.isDefault);
+      if (defaultModel && !isModelLoaded && !isLoadingDefaultModel) {
+        setIsLoadingDefaultModel(true);
+        try {
+          await handleSelectModel(defaultModel);
+        } catch (error) {
+          console.error('Error loading default model:', error);
+        } finally {
+          setIsLoadingDefaultModel(false);
+        }
+      }
     };
 
     loadModels();
@@ -68,12 +85,61 @@ const App = () => {
       const result = await window.api.loadModel(model.path);
       if (result.success) {
         setIsModelLoaded(true);
+        
+        // Set as default model
+        await window.api.setDefaultModel(model.path);
+        
+        // Update models list to reflect new default
+        const updatedModels = models.map(m => ({
+          ...m,
+          isDefault: m.path === model.path
+        }));
+        setModels(updatedModels);
+        
         handleNewChat();
+      } else if (result.vramIssue) {
+        // Show VRAM warning
+        setVramWarningInfo({
+          modelName: model.name,
+          error: result.error
+        });
+        setShowVramWarning(true);
       } else {
         console.error('Failed to load model:', result.error);
       }
     } catch (error) {
       console.error('Error loading model:', error);
+    }
+  };
+
+  const handleProceedWithVramWarning = async () => {
+    setShowVramWarning(false);
+    if (selectedModel) {
+      try {
+        // Force GPU reset
+        await window.api.forceGpuReset();
+        
+        // Try loading again with force flag
+        const result = await window.api.loadModel(selectedModel.path, { force: true });
+        if (result.success) {
+          setIsModelLoaded(true);
+          handleNewChat();
+          
+          // Set as default model
+          await window.api.setDefaultModel(selectedModel.path);
+          
+          // Update models list to reflect new default
+          const updatedModels = models.map(m => ({
+            ...m,
+            isDefault: m.path === selectedModel.path
+          }));
+          setModels(updatedModels);
+        } else {
+          console.error('Failed to force load model:', result.error);
+        }
+      } catch (error) {
+        console.error('Error force loading model:', error);
+      }
     }
   };
 
@@ -568,6 +634,14 @@ const App = () => {
           onSave={() => {
             // Refresh any settings-dependent components
           }}
+        />
+        
+        <VramWarningDialog 
+          isOpen={showVramWarning}
+          onClose={() => setShowVramWarning(false)}
+          onProceed={handleProceedWithVramWarning}
+          modelName={vramWarningInfo?.modelName || 'Selected model'}
+          errorMessage={vramWarningInfo?.error || 'High VRAM usage detected'}
         />
                 
         <Footer />

@@ -424,6 +424,7 @@ lm-terminal/
 │   │   │   ├── App copy.jsx
 │   │   │   ├── App.jsx
 │   │   │   ├── ChatContainer.jsx
+│   │   │   ├── ContextFilesManager.jsx
 │   │   │   ├── ExploreView.jsx
 │   │   │   ├── Footer.jsx
 │   │   │   ├── Header.jsx

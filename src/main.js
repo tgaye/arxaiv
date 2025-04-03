@@ -863,108 +863,90 @@ ipcMain.handle('get-gpu-info', async () => {
 
 });
 
-
+ipcMain.handle('set-default-model', async (event, modelPath) => {
+  try {
+    if (isShuttingDown) return { success: false, error: 'Application is shutting down' };
+    
+    await modelManager.setDefaultModel(modelPath);
+    return { success: true };
+  } catch (error) {
+    logError('Error setting default model', error);
+    return { success: false, error: error.message };
+  }
+});
 
 // Chat message handling
-
 ipcMain.handle('send-message', async (event, { message, conversationId }) => {
-
   try {
-
     if (isShuttingDown) return { success: false, error: 'Application is shutting down' };
-
     
-
     if (!llmService) {
-
       throw new Error('No model loaded');
-
     }
-
     
-
-    // Check GPU status before inference
-
-    const vramStatus = await vramGuardian.checkVramSafety();
-
-    if (!vramStatus.safe) {
-
-      const criticalGpu = vramStatus.criticalGpu;
-
-      return { 
-
-        success: false, 
-
-        error: `GPU resources critical: ${criticalGpu.name} at ${criticalGpu.vramUsagePercent.toFixed(1)}% VRAM usage. Please try again after closing some applications.`,
-
-        vramIssue: true
-
-      };
-
-    }
-
+    // Process the message to extract context files (if any)
+    let processedMessage = message;
+    let hasContextFiles = false;
     
-
-    // Register the inference task with the safety manager
-
-    const inferenceTaskId = `inference-${conversationId}-${Date.now()}`;
-
-    const completeTask = safetyManager.registerTask(inferenceTaskId, 'inference');
-
-    
-
-    try {
-
-      // Stream response
-
-      const responsePromise = llmService.generateResponse(message, (chunk) => {
-
-        // Send chunks to renderer
-
-        if (mainWindow && !mainWindow.isDestroyed()) {
-
-          // THIS LINE WAS CRASHING THE APP:
-
-          // ** Your LLM process is generating output
-
-          // The code is trying to send that output to the renderer process (the UI window)
-
-          // But the renderer process has already crashed or is being disposed of **
-
-
-
-          safelySendToRenderer('response-chunk', { chunk, conversationId });
-
-        }
-
-      });
-
+    // Check if message contains context files marker
+    if (message.includes("I have the following context files to reference:")) {
+      hasContextFiles = true;
       
-
-      // Wait for full response
-
-      const fullResponse = await responsePromise;
-
-      completeTask();
-
-      return { success: true, response: fullResponse };
-
-    } catch (error) {
-
-      completeTask();
-
-      throw error;
-
+      // Log the context files size to help with debugging
+      const contextSize = message.length;
+      console.log(`[Context Files] Processing message with context files (${contextSize} bytes)`);
+      
+      // If the context is extremely large, you might want to warn the user
+      if (contextSize > 500000) { // 500KB arbitrary limit
+        console.warn(`[Context Files] Very large context (${(contextSize/1024/1024).toFixed(2)}MB)`);
+      }
+      
+      // The processedMessage remains the same, just tracking that we have context files
+      processedMessage = message;
     }
-
+    
+    // Check GPU status before inference
+    const vramStatus = await vramGuardian.checkVramSafety();
+    if (!vramStatus.safe) {
+      const criticalGpu = vramStatus.criticalGpu;
+      return { 
+        success: false, 
+        error: `GPU resources critical: ${criticalGpu.name} at ${criticalGpu.vramUsagePercent.toFixed(1)}% VRAM usage. Please try again after closing some applications.`,
+        vramIssue: true
+      };
+    }
+    
+    // Register the inference task with the safety manager
+    const inferenceTaskId = `inference-${conversationId}-${Date.now()}`;
+    const completeTask = safetyManager.registerTask(inferenceTaskId, 'inference');
+    
+    try {
+      // Stream response
+      const responsePromise = llmService.generateResponse(processedMessage, (chunk) => {
+        // Send chunks to renderer
+        if (mainWindow && !mainWindow.isDestroyed()) {
+          safelySendToRenderer('response-chunk', { chunk, conversationId });
+        }
+      });
+      
+      // Wait for full response
+      const fullResponse = await responsePromise;
+      completeTask();
+      
+      // If we had context files, log completion
+      if (hasContextFiles) {
+        console.log(`[Context Files] Successfully processed message with context files`);
+      }
+      
+      return { success: true, response: fullResponse };
+    } catch (error) {
+      completeTask();
+      throw error;
+    }
   } catch (error) {
-
     logError('Error generating response', error);
-
     return { success: false, error: error.message };
-
   }
-
 });
 
 

@@ -89,7 +89,7 @@ ipcRenderer.on('app-shutting-down', () => {
 // Expose IPC methods to renderer
 contextBridge.exposeInMainWorld('api', {
   getModels: () => ipcRenderer.invoke('get-models'),
-  
+  setDefaultModel: (modelPath) => ipcRenderer.invoke('set-default-model', modelPath),
   loadModel: (modelPath) => {
     console.log('Calling loadModel from renderer');
     return new Promise((resolve, reject) => {

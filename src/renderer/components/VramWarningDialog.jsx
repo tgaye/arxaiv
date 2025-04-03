@@ -6,7 +6,7 @@ const VramWarningDialog = ({ isOpen, onClose, onProceed, modelName, estimatedVra
   if (!isOpen) return null;
   
   const usagePercentage = (estimatedVram / availableVram) * 100;
-  const isHighRisk = usagePercentage > 90;
+  const isHighRisk = usagePercentage > 5;
 
   return (
     <div className="vram-warning-overlay">

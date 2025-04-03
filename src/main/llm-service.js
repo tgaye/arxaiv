@@ -306,7 +306,15 @@ class LLMService {
 
           '-m', this.modelPath,
 
-          '--prompt', `USER: ${message}\nASSISTANT:`,
+          '--prompt', `Instructions:
+            - You are an AI assistant
+            - Do NOT repeat the user's input
+            - Respond directly and concisely
+            - Focus on providing helpful information
+
+            User: ${message}
+            Assistant:`,
+
 
           '-n', '1024',          // Number of tokens to predict
 

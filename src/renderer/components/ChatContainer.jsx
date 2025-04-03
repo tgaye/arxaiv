@@ -1,5 +1,6 @@
 // src/renderer/components/ChatContainer.jsx
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useRef, useEffect, useCallback } from 'react';
+import ContextFilesManager from './ContextFilesManager';
 import { IconSend, IconWorld } from '@tabler/icons-react';
 import SearchBar from './SearchBar';
 
@@ -7,6 +8,13 @@ const ChatContainer = ({ messages, onSendMessage, selectedModel, onSearchSubmit,
   const [input, setInput] = useState('');
   const messagesEndRef = useRef(null);
   const chatContainerRef = useRef(null);
+
+  const [contextFiles, setContextFiles] = useState([]);
+
+  // Add this function inside the component:
+  const handleContextFilesChange = useCallback((files) => {
+    setContextFiles(files);
+  }, []); 
 
   useEffect(() => {
     if (messagesEndRef.current) {
@@ -16,10 +24,22 @@ const ChatContainer = ({ messages, onSendMessage, selectedModel, onSearchSubmit,
 
   const handleSend = () => {
     if (input.trim()) {
-      onSendMessage(input);
+      // Include active context files in the message
+      const activeContextContent = contextFiles
+        .filter(file => file.active)
+        .map(file => `[File: ${file.name}]\n${file.content}\n[End File]`)
+        .join('\n\n');
+      
+      // If there are active context files, prepend them to the message
+      const messageToSend = activeContextContent 
+        ? `I have the following context files to reference:\n\n${activeContextContent}\n\nMy question/request: ${input}`
+        : input;
+        
+      onSendMessage(messageToSend);
       setInput('');
     }
   };
+  
 
   const handleKeyDown = (e) => {
     if (e.key === 'Enter' && !e.shiftKey) {
@@ -63,6 +83,7 @@ const ChatContainer = ({ messages, onSendMessage, selectedModel, onSearchSubmit,
       </div>
       
       <div className="input-container">
+        <ContextFilesManager onContextFilesChange={handleContextFilesChange} />
         <div className="input-actions">
           {messages.length > 0 && (
             <button 
@@ -79,7 +100,10 @@ const ChatContainer = ({ messages, onSendMessage, selectedModel, onSearchSubmit,
             value={input}
             onChange={(e) => setInput(e.target.value)}
             onKeyDown={handleKeyDown}
-            placeholder="Type a message and press Enter to send ..."
+            placeholder={contextFiles.length > 0 ? 
+              `Ask questions about your ${contextFiles.filter(f => f.active).length} active context files...` : 
+              "Type a message and press Enter to send ..."
+            }
             rows={1}
           />
           <button className="send-button" onClick={handleSend}>

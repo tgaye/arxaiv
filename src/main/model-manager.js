@@ -1,3 +1,4 @@
+// src/main/model-manager.js
 const path = require('path');
 const fs = require('fs-extra');
 const Store = require('electron-store');
@@ -7,6 +8,7 @@ class ModelManager {
     this.store = new Store();
     this.models = [];
     this.modelDirectory = this.store.get('modelDirectory') || this.getDefaultModelDirectory();
+    this.defaultModelPath = this.store.get('defaultModelPath') || null;
   }
 
   getDefaultModelDirectory() {
@@ -87,6 +89,7 @@ class ModelManager {
           arch: this.guessModelArchitecture(item.file),
           params: this.guessModelParameters(item.file),
           modified: item.stats.mtime,
+          isDefault: item.filePath === this.defaultModelPath
         }));
       
       // Also look in subdirectories for model files
@@ -108,6 +111,7 @@ class ModelManager {
                 arch: this.guessModelArchitecture(file),
                 params: this.guessModelParameters(file),
                 modified: stats.mtime,
+                isDefault: filePath === this.defaultModelPath
               };
             });
           
@@ -128,6 +132,27 @@ class ModelManager {
 
   async getModels() {
     return this.models;
+  }
+
+  async getDefaultModel() {
+    if (!this.defaultModelPath) return null;
+    
+    // Find the default model in the loaded models
+    const defaultModel = this.models.find(model => model.path === this.defaultModelPath);
+    return defaultModel || null;
+  }
+
+  async setDefaultModel(modelPath) {
+    this.defaultModelPath = modelPath;
+    this.store.set('defaultModelPath', modelPath);
+    
+    // Update the isDefault flag in the models array
+    this.models = this.models.map(model => ({
+      ...model,
+      isDefault: model.path === modelPath
+    }));
+    
+    return this.getDefaultModel();
   }
 
   formatFileSize(bytes) {
