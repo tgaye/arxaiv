@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Context is Key: A Benchmark for Forecasting with Essential Textual Information</title>
+   <style>
+       /* Monokai-inspired theme */
+       :root {
+           --bg-color: #272822;
+           --text-color: #f8f8f2;
+           --accent-1: #fd971f; /* orange */
+           --accent-2: #a6e22e; /* green */
+           --accent-3: #f92672; /* pink */
+           --accent-4: #ae81ff; /* purple */
+           --accent-5: #e6db74; /* yellow */
+           --link-color: #66d9ef; /* blue - reserved for links */
+           --gray-light: #75715e;
+           --gray-lighter: #8f908a;
+           --header-bg: #1e1f1c;
+           --code-bg: #3e3d32;
+       }
+       
+       body {
+           background-color: var(--bg-color);
+           color: var(--text-color);
+           font-family: 'Courier New', monospace;
+           margin: 0;
+           padding: 0;
+           line-height: 1.6;
+       }
+       
+       .container {
+           width: 90%;
+           max-width: 1200px;
+           margin: 0 auto;
+           padding: 20px;
+       }
+       
+       header {
+           background-color: var(--header-bg);
+           padding: 20px;
+           text-align: center;
+           margin-bottom: 20px;
+       }
+       
+       h1 {
+           color: var(--accent-1);
+           margin: 0;
+       }
+       
+       h2 {
+           color: var(--accent-2);
+           border-bottom: 1px solid var(--gray-light);
+           padding-bottom: 10px;
+       }
+       
+       h3 {
+           color: var(--accent-3);
+       }
+       
+       a {
+           color: var(--link-color);
+           text-decoration: none;
+       }
+       
+       a:hover {
+           text-decoration: underline;
+       }
+       
+       .links {
+           margin: 20px 0;
+           padding: 15px;
+           background-color: var(--header-bg);
+           border-radius: 5px;
+           text-align: center;
+       }
+       
+       .links a {
+           margin: 0 10px;
+           font-weight: bold;
+       }
+       
+       .tab-buttons {
+           display: flex;
+           justify-content: center;
+           margin-bottom: 20px;
+       }
+       
+       .tab-button {
+           background-color: var(--header-bg);
+           color: var(--text-color);
+           border: none;
+           padding: 10px 20px;
+           margin: 0 5px;
+           cursor: pointer;
+           border-radius: 5px;
+           font-family: 'Courier New', monospace;
+           transition: background-color 0.3s;
+       }
+       
+       .tab-button:hover {
+           background-color: var(--gray-light);
+       }
+       
+       .tab-button.active {
+           background-color: var(--accent-1);
+           color: var(--header-bg);
+       }
+       
+       .tab-content {
+           display: none;
+           padding: 20px;
+           background-color: var(--header-bg);
+           border-radius: 5px;
+       }
+       
+       .tab-content.active {
+           display: block;
+       }
+       
+       table {
+           width: 100%;
+           border-collapse: collapse;
+           margin: 20px 0;
+       }
+       
+       th, td {
+           padding: 12px;
+           text-align: left;
+           border-bottom: 1px solid var(--gray-light);
+       }
+       
+       th {
+           background-color: var(--code-bg);
+           color: var(--accent-5);
+       }
+       
+       tr:hover {
+           background-color: var(--code-bg);
+       }
+       
+       code, pre {
+           background-color: var(--code-bg);
+           padding: 2px 5px;
+           border-radius: 3px;
+           font-family: 'Courier New', monospace;
+           overflow-x: auto;
+           display: block;
+           padding: 15px;
+           margin: 15px 0;
+       }
+       
+       .highlight {
+           color: var(--accent-4);
+           font-weight: bold;
+       }
+   </style>
+</head>
+<body>
+   <header>
+       <h1>Context is Key: A Benchmark for Forecasting with Essential Textual Information</h1>
+   </header>
+   
+   <div class="container">
+       <div class="links">
+           <a href="https://arxiv.org/abs/2410.18959" target="_blank">📄 Paper</a>
+           <a href="https://github.com/ServiceNow/context-is-key-forecasting" target="_blank">💻 GitHub</a>
+           <a href="https://servicenow.github.io/context-is-key-forecasting/v0/" target="_blank">🌐 Website</a>
+       </div>
+       
+       <div class="tab-buttons">
+           <button class="tab-button active" onclick="openTab(event, 'overview')">Overview</button>
+           <button class="tab-button" onclick="openTab(event, 'results')">Results</button>
+           <button class="tab-button" onclick="openTab(event, 'structure')">Project Structure</button>
+           <button class="tab-button" onclick="openTab(event, 'setup')">Setup Guide</button>
+       </div>
+       
+       <div id="overview" class="tab-content active">
+           <h2>Technical Overview</h2>
+           <p>The <span class="highlight">Context is Key (CiK)</span> benchmark evaluates a model's ability to incorporate textual context to improve time-series forecasting accuracy. The benchmark consists of 71 manually designed tasks across 7 real-world domains where contextual information is essential for accurate predictions.</p>
+           
+           <h3>Key Features</h3>
+           <ul>
+               <li><span class="highlight">Diverse Textual Context Types:</span> The benchmark includes different types of context (intemporal, future, historical, covariate, and causal information).</li>
+               <li><span class="highlight">Region of Interest CRPS (RCRPS):</span> A novel evaluation metric that prioritizes context-sensitive forecast windows and penalizes constraint violations.</li>
+               <li><span class="highlight">Real-World Applications:</span> Tasks span domains including climatology, traffic, energy, retail, public safety, mechanics, and economics.</li>
+           </ul>
+           
+           <h3>Context Types</h3>
+           <table>
+               <tr>
+                   <th>Context Type</th>
+                   <th>Description</th>
+               </tr>
+               <tr>
+                   <td>Intemporal Information (c_i)</td>
+                   <td>Information about the process that remains invariant in time</td>
+               </tr>
+               <tr>
+                   <td>Future Information (c_f)</td>
+                   <td>Information about the future behavior of the time series</td>
+               </tr>
+               <tr>
+                   <td>Historical Information (c_h)</td>
+                   <td>Information about past behavior not revealed by available numerical history</td>
+               </tr>
+               <tr>
+                   <td>Covariate Information (c_cov)</td>
+                   <td>Information about additional variables statistically associated with the target</td>
+               </tr>
+               <tr>
+                   <td>Causal Information (c_causal)</td>
+                   <td>Information about causal relationships between covariates and the target variable</td>
+               </tr>
+           </table>
+       </div>
+       
+       <div id="results" class="tab-content">
+           <h2>Key Results</h2>
+           <p>The benchmark evaluates a range of approaches including statistical models, time series foundation models (TSFM), and LLM-based forecasters.</p>
+           
+           <h3>Best-Performing Models</h3>
+           <table>
+               <tr>
+                   <th>Model</th>
+                   <th>Average RCRPS</th>
+                   <th>Avg Rank</th>
+                   <th>Notes</th>
+               </tr>
+               <tr>
+                   <td>Direct Prompt - Llama-3.1-405B-Inst</td>
+                   <td>0.159 ± 0.008</td>
+                   <td>4.447 ± 0.237</td>
+                   <td>Best overall performance</td>
+               </tr>
+               <tr>
+                   <td>Direct Prompt - GPT-4o</td>
+                   <td>0.276 ± 0.010</td>
+                   <td>4.519 ± 0.156</td>
+                   <td>Competitive average rank</td>
+               </tr>
+               <tr>
+                   <td>LLMP - Llama-3-70B</td>
+                   <td>0.237 ± 0.006</td>
+                   <td>6.549 ± 0.245</td>
+                   <td>Strong non-instruct model</td>
+               </tr>
+               <tr>
+                   <td>LLMP - Mixtral-8x7B</td>
+                   <td>0.262 ± 0.008</td>
+                   <td>8.528 ± 0.198</td>
+                   <td>Strong middle-sized model</td>
+               </tr>
+               <tr>
+                   <td>TSFM - Lag-Llama</td>
+                   <td>0.329 ± 0.004</td>
+                   <td>13.419 ± 0.235</td>
+                   <td>Best foundation model</td>
+               </tr>
+           </table>
+           
+           <h3>Key Findings</h3>
+           <ul>
+               <li>Incorporating contextual information significantly improves forecasting accuracy for many models</li>
+               <li>The simple "Direct Prompt" method outperforms other tested approaches</li>
+               <li>No single method excels across all context types, indicating room for advancement</li>
+               <li>LLMs show strong performance when leveraging context but sometimes exhibit significant failures</li>
+               <li>LLM-based forecasters have higher computational costs compared to traditional methods</li>
+           </ul>
+           
+           <h3>Improvement from Context</h3>
+           <p>Models improve significantly when using context vs. not using context:</p>
+           <table>
+               <tr>
+                   <th>Model</th>
+                   <th>With Context (RCRPS)</th>
+                   <th>Without Context (RCRPS)</th>
+                   <th>Improvement</th>
+               </tr>
+               <tr>
+                   <td>Direct Prompt - Llama-3.1-405B-Inst</td>
+                   <td>0.159</td>
+                   <td>0.473</td>
+                   <td>67.1%</td>
+               </tr>
+               <tr>
+                   <td>Direct Prompt - GPT-4o</td>
+                   <td>0.276</td>
+                   <td>0.441</td>
+                   <td>37.4%</td>
+               </tr>
+           </table>
+       </div>
+       
+       <div id="structure" class="tab-content">
+           <h2>Project Structure</h2>
+           <p>The repository is organized as follows:</p>
+           
+           <table>
+               <tr>
+                   <th>Directory/File</th>
+                   <th>Description</th>
+               </tr>
+               <tr>
+                   <td>cik_benchmark/</td>
+                   <td>Core benchmark code</td>
+               </tr>
+               <tr>
+                   <td>└─ base.py</td>
+                   <td>Base classes for tasks</td>
+               </tr>
+               <tr>
+                   <td>└─ baselines/</td>
+                   <td>Implementation of baseline methods</td>
+               </tr>
+               <tr>
+                   <td>└─ tasks/</td>
+                   <td>Task definitions</td>
+               </tr>
+               <tr>
+                   <td>└─ metrics/</td>
+                   <td>Metrics implementation including RCRPS</td>
+               </tr>
+               <tr>
+                   <td>└─ data/</td>
+                   <td>Data handling utilities</td>
+               </tr>
+               <tr>
+                   <td>experiments/</td>
+                   <td>Experiment configurations</td>
+               </tr>
+               <tr>
+                   <td>results/</td>
+                   <td>Benchmark results</td>
+               </tr>
+               <tr>
+                   <td>notebooks/</td>
+                   <td>Example notebooks</td>
+               </tr>
+               <tr>
+                   <td>run_baselines.py</td>
+                   <td>Script to run baseline models</td>
+               </tr>
+               <tr>
+                   <td>precompute_scaling_cache.py</td>
+                   <td>Compute scaling coefficients for metrics</td>
+               </tr>
+               <tr>
+                   <td>compile_roi_results.py</td>
+                   <td>Process and compile results</td>
+               </tr>
+           </table>
+           
+           <h3>Key Files for Experimentation</h3>
+           <ul>
+               <li><code>run_baselines.py</code>: Command line tool to run experiments specified in JSON files</li>
+               <li><code>bootstrap_datasets.py</code>: Download datasets for all tasks</li>
+               <li><code>experiments/</code>: Contains JSON configurations for different model setups</li>
+           </ul>
+       </div>
+       
+       <div id="setup" class="tab-content">
+           <h2>Setup Guide</h2>
+           <p>Follow these steps to set up the environment and run the benchmark:</p>
+           
+           <h3>1. Create a new environment</h3>
+           <pre>
+mkdir cik-benchmark
+cd cik-benchmark
+python -m venv env
+source env/bin/activate  # On Windows: env\Scripts\activate
+           </pre>
+           
+           <h3>2. Clone the repository</h3>
+           <pre>
+git clone https://github.com/ServiceNow/context-is-key-forecasting.git
+cd context-is-key-forecasting
+           </pre>
+           
+           <h3>3. Install dependencies</h3>
+           <pre>
+pip install -e .
+pip install -e ".[dev]"  # For development dependencies
+pip install -e ".[r]"    # If using R-based forecasters
+           </pre>
+           
+           <h3>4. Set environment variables</h3>
+           <pre>
+export CIK_DATA_STORE="./data"
+export CIK_RESULT_CACHE="./inference_cache"
+export CIK_METRIC_SCALING_CACHE="./metric_scaling_cache"
+
+# For API-based models (if needed)
+# export CIK_OPENAI_API_KEY="your_api_key"
+           </pre>
+           
+           <h3>5. Download datasets</h3>
+           <pre>
+python bootstrap_datasets.py
+           </pre>
+           
+           <h3>6. Precompute scaling cache</h3>
+           <pre>
+python precompute_scaling_cache.py
+           </pre>
+           
+           <h3>7. Run a simple experiment</h3>
+           <p>Create a JSON file for experiment configuration:</p>
+           <pre>
+mkdir -p experiments/my_experiment
+touch experiments/my_experiment/config.json
+           </pre>
+           
+           <p>Add the following to config.json:</p>
+           <pre>
+[
+   {"label": "Statsmodels", "method": "statsmodels"}
+]
+           </pre>
+           
+           <p>Run the experiment:</p>
+           <pre>
+python run_baselines.py --exp-spec experiments/my_experiment/config.json --output ./results/my_experiment
+           </pre>
+           
+           <h3>8. View results</h3>
+           <pre>
+cd results/my_experiment
+cat Statsmodels/results.csv
+           </pre>
+           
+           <h3>9. Run different model types</h3>
+           <p>For more comprehensive testing, create different configuration files. Example:</p>
+           <pre>
+# For Direct Prompt with GPT-4o
+[
+   {"label": "GPT-4o", "method": "directprompt", "llm": "gpt-4o", "use_context": true}
+]
+
+# For LLMP with Mixtral
+[
+   {"label": "LLMP-Mixtral", "method": "llmp", "llm": "Mixtral-8x7B", "use_context": true}
+]
+           </pre>
+       </div>
+   </div>
+   
+   <script>
+       function openTab(evt, tabName) {
+           var i, tabContent, tabButtons;
+           
+           // Hide all tab content
+           tabContent = document.getElementsByClassName("tab-content");
+           for (i = 0; i < tabContent.length; i++) {
+               tabContent[i].classList.remove("active");
+           }
+           
+           // Remove "active" class from all tab buttons
+           tabButtons = document.getElementsByClassName("tab-button");
+           for (i = 0; i < tabButtons.length; i++) {
+               tabButtons[i].classList.remove("active");
+           }
+           
+           // Show the current tab and add "active" class to the button
+           document.getElementById(tabName).classList.add("active");
+           evt.currentTarget.classList.add("active");
+       }
+   </script>
+</body>
+</html>

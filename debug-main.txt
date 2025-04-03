@@ -1,0 +1,728 @@
+
+2025-04-01T17:59:46.481Z: Loading model: C:\Users\tyler\.lmstudio\models\lmstudio-community\DeepSeek-R1-Distill-Qwen-7B-GGUF\DeepSeek-R1-Distill-Qwen-7B-Q4_K_M.gguf
+
+2025-04-01T17:59:46.484Z: Model loaded successfully
+
+2025-04-01T17:59:51.165Z: Loading model: C:\Users\tyler\.lmstudio\models\lmstudio-community\DeepSeek-R1-Distill-Qwen-7B-GGUF\DeepSeek-R1-Distill-Qwen-7B-Q4_K_M.gguf
+
+2025-04-01T17:59:51.168Z: Model loaded successfully
+
+2025-04-01T18:15:43.081Z: Loading model: C:\Users\tyler\.lmstudio\models\lmstudio-community\DeepSeek-R1-Distill-Qwen-7B-GGUF\DeepSeek-R1-Distill-Qwen-7B-Q4_K_M.gguf
+
+2025-04-01T18:15:43.085Z: Model loaded successfully
+
+2025-04-01T18:15:45.705Z: Loading model: C:\Users\tyler\.lmstudio\models\lmstudio-community\DeepSeek-R1-Distill-Qwen-7B-GGUF\DeepSeek-R1-Distill-Qwen-7B-Q4_K_M.gguf
+
+2025-04-01T18:15:45.707Z: Model loaded successfully
+
+2025-04-01T18:17:17.214Z: Loading model: C:\Users\tyler\.lmstudio\models\lmstudio-community\DeepSeek-R1-Distill-Qwen-7B-GGUF\DeepSeek-R1-Distill-Qwen-7B-Q4_K_M.gguf
+
+2025-04-01T18:17:17.218Z: Model loaded successfully
+
+2025-04-01T18:17:19.280Z: Loading model: C:\Users\tyler\.lmstudio\models\lmstudio-community\DeepSeek-R1-Distill-Qwen-7B-GGUF\DeepSeek-R1-Distill-Qwen-7B-Q4_K_M.gguf
+
+2025-04-01T18:17:19.282Z: Model loaded successfully
+
+2025-04-01T18:17:53.747Z: Loading model: C:\Users\tyler\.lmstudio\models\lmstudio-community\DeepSeek-R1-Distill-Qwen-7B-GGUF\DeepSeek-R1-Distill-Qwen-7B-Q4_K_M.gguf
+
+2025-04-01T18:17:53.751Z: Model loaded successfully
+
+2025-04-01T18:17:54.086Z: Loading model: C:\Users\tyler\.lmstudio\models\lmstudio-community\DeepSeek-R1-Distill-Qwen-7B-GGUF\DeepSeek-R1-Distill-Qwen-7B-Q4_K_M.gguf
+
+2025-04-01T18:17:54.088Z: Model loaded successfully
+
+2025-04-01T18:24:11.331Z: Loading model: C:\Users\tyler\.lmstudio\models\lmstudio-community\Qwen2.5-Coder-7B-Instruct-GGUF\Qwen2.5-Coder-7B-Instruct-Q8_0.gguf
+
+2025-04-01T18:24:11.355Z: Model loaded successfully
+
+2025-04-01T18:25:23.446Z: Loading model: C:\Users\tyler\.lmstudio\models\lmstudio-community\gemma-3-4b-it-GGUF\mmproj-model-f16.gguf
+
+2025-04-01T18:25:24.083Z: Model loaded successfully
+
+2025-04-01T18:25:25.935Z: Loading model: C:\Users\tyler\.lmstudio\models\lmstudio-community\gemma-3-4b-it-GGUF\mmproj-model-f16.gguf
+
+2025-04-01T18:25:25.937Z: Model loaded successfully
+
+2025-04-01T18:26:00.008Z: Loading model: C:\Users\tyler\.lmstudio\models\lmstudio-community\Qwen2.5-Coder-7B-Instruct-GGUF\Qwen2.5-Coder-7B-Instruct-Q8_0.gguf
+
+2025-04-01T18:26:00.011Z: Model loaded successfully
+
+2025-04-01T18:38:30.079Z: Loading model: C:\Users\tyler\.lmstudio\models\lmstudio-community\gemma-3-4b-it-GGUF\mmproj-model-f16.gguf
+
+2025-04-01T18:38:30.083Z: Model loaded successfully
+
+2025-04-01T18:38:31.894Z: Loading model: C:\Users\tyler\.lmstudio\models\lmstudio-community\gemma-3-4b-it-GGUF\mmproj-model-f16.gguf
+
+2025-04-01T18:38:31.896Z: Model loaded successfully
+
+2025-04-01T18:38:48.688Z: Loading model: C:\Users\tyler\.lmstudio\models\lmstudio-community\DeepSeek-R1-Distill-Qwen-7B-GGUF\DeepSeek-R1-Distill-Qwen-7B-Q4_K_M.gguf
+
+2025-04-01T18:38:48.690Z: Model loaded successfully
+
+2025-04-01T19:34:02.040Z: Loading model: C:\Users\tyler\.lmstudio\models\lmstudio-community\gemma-3-4b-it-GGUF\mmproj-model-f16.gguf
+
+2025-04-01T19:34:02.044Z: Model loaded successfully
+
+2025-04-01T19:34:04.651Z: Loading model: C:\Users\tyler\.lmstudio\models\lmstudio-community\gemma-3-4b-it-GGUF\mmproj-model-f16.gguf
+
+2025-04-01T19:34:04.653Z: Model loaded successfully
+
+2025-04-01T19:36:31.695Z: Loading model: C:\Users\tyler\.lmstudio\models\lmstudio-community\DeepSeek-R1-Distill-Qwen-7B-GGUF\DeepSeek-R1-Distill-Qwen-7B-Q4_K_M.gguf
+
+2025-04-01T19:36:31.697Z: Model loaded successfully
+
+2025-04-01T19:37:15.896Z: Loading model: C:\Users\tyler\.lmstudio\models\lmstudio-community\gemma-3-4b-it-GGUF\mmproj-model-f16.gguf
+
+2025-04-01T19:37:15.899Z: Model loaded successfully
+
+2025-04-01T19:39:41.876Z: Loading model: C:\Users\tyler\.lmstudio\models\lmstudio-community\gemma-3-4b-it-GGUF\gemma-3-4b-it-Q8_0.gguf
+
+2025-04-01T19:39:41.877Z: Model loaded successfully
+
+2025-04-01T19:39:43.145Z: Loading model: C:\Users\tyler\.lmstudio\models\lmstudio-community\gemma-3-4b-it-GGUF\gemma-3-4b-it-Q8_0.gguf
+
+2025-04-01T19:39:43.146Z: Model loaded successfully
+
+2025-04-01T19:49:05.267Z: Loading model: C:\Users\tyler\.lmstudio\models\lmstudio-community\DeepSeek-R1-Distill-Qwen-7B-GGUF\DeepSeek-R1-Distill-Qwen-7B-Q4_K_M.gguf
+
+2025-04-01T19:49:05.269Z: Model loaded successfully
+
+2025-04-01T19:49:07.031Z: Loading model: C:\Users\tyler\.lmstudio\models\lmstudio-community\DeepSeek-R1-Distill-Qwen-7B-GGUF\DeepSeek-R1-Distill-Qwen-7B-Q4_K_M.gguf
+
+2025-04-01T19:49:07.033Z: Model loaded successfully
+
+2025-04-01T19:49:46.964Z: Loading model: C:\Users\tyler\.lmstudio\models\lmstudio-community\gemma-3-4b-it-GGUF\mmproj-model-f16.gguf
+
+2025-04-01T19:49:46.968Z: Model loaded successfully
+
+2025-04-01T20:07:24.259Z: Loading model: C:\Users\tyler\.lmstudio\models\lmstudio-community\DeepSeek-R1-Distill-Qwen-7B-GGUF\DeepSeek-R1-Distill-Qwen-7B-Q4_K_M.gguf
+
+2025-04-01T20:07:24.261Z: Model loaded successfully
+
+2025-04-01T20:07:24.947Z: Loading model: C:\Users\tyler\.lmstudio\models\lmstudio-community\DeepSeek-R1-Distill-Qwen-7B-GGUF\DeepSeek-R1-Distill-Qwen-7B-Q4_K_M.gguf
+
+2025-04-01T20:07:24.949Z: Model loaded successfully
+
+2025-04-01T20:21:58.727Z: Loading model: C:\Users\tyler\.lmstudio\models\lmstudio-community\gemma-3-4b-it-GGUF\gemma-3-4b-it-Q8_0.gguf
+
+2025-04-01T20:21:58.730Z: Model loaded successfully
+
+2025-04-01T20:21:59.880Z: Loading model: C:\Users\tyler\.lmstudio\models\lmstudio-community\gemma-3-4b-it-GGUF\gemma-3-4b-it-Q8_0.gguf
+
+2025-04-01T20:21:59.883Z: Model loaded successfully
+
+2025-04-01T20:23:01.029Z: Loading model: C:\Users\tyler\.lmstudio\models\lmstudio-community\Qwen2.5-Coder-7B-Instruct-GGUF\Qwen2.5-Coder-7B-Instruct-Q8_0.gguf
+
+2025-04-01T20:23:01.033Z: Model loaded successfully
+
+2025-04-01T20:23:45.562Z: Loading model: C:\Users\tyler\.lmstudio\models\lmstudio-community\gemma-3-4b-it-GGUF\mmproj-model-f16.gguf
+
+2025-04-01T20:23:45.567Z: Model loaded successfully
+
+2025-04-01T20:23:47.667Z: Loading model: C:\Users\tyler\.lmstudio\models\lmstudio-community\gemma-3-4b-it-GGUF\mmproj-model-f16.gguf
+
+2025-04-01T20:23:47.669Z: Model loaded successfully
+
+2025-04-01T20:24:39.876Z: Loading model: C:\Users\tyler\.lmstudio\models\lmstudio-community\Qwen2.5-Coder-7B-Instruct-GGUF\Qwen2.5-Coder-7B-Instruct-Q8_0.gguf
+
+2025-04-01T20:24:39.877Z: Model loaded successfully
+
+2025-04-01T20:25:05.497Z: Loading model: C:\Users\tyler\.lmstudio\models\lmstudio-community\Qwen2.5-Coder-7B-Instruct-GGUF\Qwen2.5-Coder-7B-Instruct-Q8_0.gguf
+
+2025-04-01T20:25:05.502Z: Model loaded successfully
+
+2025-04-01T20:38:32.162Z: Loading model: C:\Users\tyler\.lmstudio\models\lmstudio-community\gemma-3-4b-it-GGUF\mmproj-model-f16.gguf
+
+2025-04-01T20:38:32.164Z: Model loaded successfully
+
+2025-04-01T20:38:32.727Z: Loading model: C:\Users\tyler\.lmstudio\models\lmstudio-community\Qwen2.5-Coder-7B-Instruct-GGUF\Qwen2.5-Coder-7B-Instruct-Q8_0.gguf
+
+2025-04-01T20:38:32.729Z: Model loaded successfully
+
+2025-04-01T20:47:40.095Z: Loading model: C:\Users\tyler\.lmstudio\models\lmstudio-community\DeepSeek-R1-Distill-Qwen-7B-GGUF\DeepSeek-R1-Distill-Qwen-7B-Q4_K_M.gguf
+
+2025-04-01T20:47:40.097Z: Model loaded successfully
+
+2025-04-01T20:47:41.056Z: Loading model: C:\Users\tyler\.lmstudio\models\lmstudio-community\DeepSeek-R1-Distill-Qwen-7B-GGUF\DeepSeek-R1-Distill-Qwen-7B-Q4_K_M.gguf
+
+2025-04-01T20:47:41.058Z: Model loaded successfully
+
+2025-04-01T20:53:14.405Z: Loading model: C:\Users\tyler\.lmstudio\models\lmstudio-community\DeepSeek-R1-Distill-Qwen-7B-GGUF\DeepSeek-R1-Distill-Qwen-7B-Q4_K_M.gguf
+
+2025-04-01T20:53:14.407Z: Model loaded successfully
+
+2025-04-01T20:53:15.308Z: Loading model: C:\Users\tyler\.lmstudio\models\lmstudio-community\DeepSeek-R1-Distill-Qwen-7B-GGUF\DeepSeek-R1-Distill-Qwen-7B-Q4_K_M.gguf
+
+2025-04-01T20:53:15.311Z: Model loaded successfully
+
+2025-04-01T20:55:20.576Z: Loading model: C:\Users\tyler\.lmstudio\models\lmstudio-community\gemma-3-4b-it-GGUF\gemma-3-4b-it-Q8_0.gguf
+
+2025-04-01T20:55:20.578Z: Model loaded successfully
+
+2025-04-01T20:55:21.653Z: Loading model: C:\Users\tyler\.lmstudio\models\lmstudio-community\gemma-3-4b-it-GGUF\gemma-3-4b-it-Q8_0.gguf
+
+2025-04-01T20:55:21.655Z: Model loaded successfully
+
+2025-04-01T20:57:40.881Z: Loading model: C:\Users\tyler\.lmstudio\models\lmstudio-community\DeepSeek-R1-Distill-Qwen-7B-GGUF\DeepSeek-R1-Distill-Qwen-7B-Q4_K_M.gguf
+
+2025-04-01T20:57:40.883Z: Model loaded successfully
+
+2025-04-01T20:57:54.056Z: Loading model: C:\Users\tyler\.lmstudio\models\lmstudio-community\DeepSeek-R1-Distill-Qwen-7B-GGUF\DeepSeek-R1-Distill-Qwen-7B-Q4_K_M.gguf
+
+2025-04-01T20:57:54.058Z: Model loaded successfully
+
+2025-04-01T20:58:17.868Z: Loading model: C:\Users\tyler\.lmstudio\models\lmstudio-community\Qwen2.5-Coder-7B-Instruct-GGUF\Qwen2.5-Coder-7B-Instruct-Q8_0.gguf
+
+2025-04-01T20:58:17.872Z: Model loaded successfully
+
+2025-04-01T20:59:04.721Z: Loading model: C:\Users\tyler\.lmstudio\models\lmstudio-community\DeepSeek-R1-Distill-Qwen-7B-GGUF\DeepSeek-R1-Distill-Qwen-7B-Q4_K_M.gguf
+
+2025-04-01T20:59:04.724Z: Model loaded successfully
+
+2025-04-01T21:22:21.226Z: Loading model: C:\Users\tyler\.lmstudio\models\lmstudio-community\DeepSeek-R1-Distill-Qwen-7B-GGUF\DeepSeek-R1-Distill-Qwen-7B-Q4_K_M.gguf
+
+2025-04-01T21:22:21.228Z: Model loaded successfully
+
+2025-04-01T21:22:22.438Z: Loading model: C:\Users\tyler\.lmstudio\models\lmstudio-community\DeepSeek-R1-Distill-Qwen-7B-GGUF\DeepSeek-R1-Distill-Qwen-7B-Q4_K_M.gguf
+
+2025-04-01T21:22:22.439Z: Model loaded successfully
+
+2025-04-01T21:26:01.791Z: Loading model: C:\Users\tyler\.lmstudio\models\lmstudio-community\DeepSeek-R1-Distill-Qwen-7B-GGUF\DeepSeek-R1-Distill-Qwen-7B-Q4_K_M.gguf
+
+2025-04-01T21:26:01.794Z: Model loaded successfully
+
+2025-04-01T21:26:02.831Z: Loading model: C:\Users\tyler\.lmstudio\models\lmstudio-community\Qwen2.5-Coder-7B-Instruct-GGUF\Qwen2.5-Coder-7B-Instruct-Q8_0.gguf
+
+2025-04-01T21:26:02.833Z: Model loaded successfully
+
+2025-04-01T21:26:24.122Z: Loading model: C:\Users\tyler\.lmstudio\models\lmstudio-community\gemma-3-4b-it-GGUF\gemma-3-4b-it-Q8_0.gguf
+
+2025-04-01T21:26:24.123Z: Model loaded successfully
+
+2025-04-01T21:26:24.666Z: Loading model: C:\Users\tyler\.lmstudio\models\lmstudio-community\gemma-3-4b-it-GGUF\gemma-3-4b-it-Q8_0.gguf
+
+2025-04-01T21:26:24.668Z: Model loaded successfully
+
+2025-04-01T21:29:49.926Z: Loading model: C:\Users\tyler\.lmstudio\models\lmstudio-community\gemma-3-4b-it-GGUF\gemma-3-4b-it-Q8_0.gguf
+
+2025-04-01T21:29:49.928Z: Model loaded successfully
+
+2025-04-01T21:29:50.566Z: Loading model: C:\Users\tyler\.lmstudio\models\lmstudio-community\gemma-3-4b-it-GGUF\gemma-3-4b-it-Q8_0.gguf
+
+2025-04-01T21:29:50.567Z: Model loaded successfully
+
+2025-04-01T21:31:29.148Z: Loading model: C:\Users\tyler\.lmstudio\models\lmstudio-community\DeepSeek-R1-Distill-Qwen-7B-GGUF\DeepSeek-R1-Distill-Qwen-7B-Q4_K_M.gguf
+
+2025-04-01T21:31:29.152Z: Model loaded successfully
+
+2025-04-01T21:33:57.947Z: Loading model: C:\Users\tyler\.lmstudio\models\lmstudio-community\Qwen2.5-Coder-7B-Instruct-GGUF\Qwen2.5-Coder-7B-Instruct-Q8_0.gguf
+
+2025-04-01T21:33:57.949Z: Model loaded successfully
+
+2025-04-01T21:33:58.502Z: Loading model: C:\Users\tyler\.lmstudio\models\lmstudio-community\Qwen2.5-Coder-7B-Instruct-GGUF\Qwen2.5-Coder-7B-Instruct-Q8_0.gguf
+
+2025-04-01T21:33:58.504Z: Model loaded successfully
+
+2025-04-01T21:34:27.741Z: Loading model: C:\Users\tyler\.lmstudio\models\lmstudio-community\Qwen2.5-Coder-7B-Instruct-GGUF\Qwen2.5-Coder-7B-Instruct-Q8_0.gguf
+
+2025-04-01T21:34:27.743Z: Model loaded successfully
+
+2025-04-01T21:34:28.191Z: Loading model: C:\Users\tyler\.lmstudio\models\lmstudio-community\Qwen2.5-Coder-7B-Instruct-GGUF\Qwen2.5-Coder-7B-Instruct-Q8_0.gguf
+
+2025-04-01T21:34:28.193Z: Model loaded successfully
+
+2025-04-01T21:36:55.664Z: Loading model: C:\Users\tyler\.lmstudio\models\lmstudio-community\DeepSeek-R1-Distill-Qwen-7B-GGUF\DeepSeek-R1-Distill-Qwen-7B-Q4_K_M.gguf
+
+2025-04-01T21:36:55.666Z: Model loaded successfully
+
+2025-04-01T21:36:56.510Z: Loading model: C:\Users\tyler\.lmstudio\models\lmstudio-community\Qwen2.5-Coder-7B-Instruct-GGUF\Qwen2.5-Coder-7B-Instruct-Q8_0.gguf
+
+2025-04-01T21:36:56.512Z: Model loaded successfully
+
+2025-04-01T21:40:17.561Z: Loading model: C:\Users\tyler\.lmstudio\models\lmstudio-community\gemma-3-4b-it-GGUF\mmproj-model-f16.gguf
+
+2025-04-01T21:40:17.563Z: Model loaded successfully
+
+2025-04-01T21:40:18.032Z: Loading model: C:\Users\tyler\.lmstudio\models\lmstudio-community\gemma-3-4b-it-GGUF\mmproj-model-f16.gguf
+
+2025-04-01T21:40:18.034Z: Model loaded successfully
+
+2025-04-01T21:42:50.837Z: Loading model: C:\Users\tyler\.lmstudio\models\lmstudio-community\Qwen2.5-Coder-7B-Instruct-GGUF\Qwen2.5-Coder-7B-Instruct-Q8_0.gguf
+
+2025-04-01T21:42:50.838Z: Model loaded successfully
+
+2025-04-01T21:42:51.392Z: Loading model: C:\Users\tyler\.lmstudio\models\lmstudio-community\Qwen2.5-Coder-7B-Instruct-GGUF\Qwen2.5-Coder-7B-Instruct-Q8_0.gguf
+
+2025-04-01T21:42:51.394Z: Model loaded successfully
+
+2025-04-01T21:43:49.203Z: Loading model: C:\Users\tyler\.lmstudio\models\lmstudio-community\Qwen2.5-Coder-7B-Instruct-GGUF\Qwen2.5-Coder-7B-Instruct-Q8_0.gguf
+
+2025-04-01T21:43:49.205Z: Model loaded successfully
+
+2025-04-01T21:43:49.832Z: Loading model: C:\Users\tyler\.lmstudio\models\lmstudio-community\Qwen2.5-Coder-7B-Instruct-GGUF\Qwen2.5-Coder-7B-Instruct-Q8_0.gguf
+
+2025-04-01T21:43:49.835Z: Model loaded successfully
+
+2025-04-01T21:45:07.570Z: Loading model: C:\Users\tyler\.lmstudio\models\lmstudio-community\Qwen2.5-Coder-7B-Instruct-GGUF\Qwen2.5-Coder-7B-Instruct-Q8_0.gguf
+
+2025-04-01T21:45:07.573Z: Model loaded successfully
+
+2025-04-01T21:45:08.004Z: Loading model: C:\Users\tyler\.lmstudio\models\lmstudio-community\Qwen2.5-Coder-7B-Instruct-GGUF\Qwen2.5-Coder-7B-Instruct-Q8_0.gguf
+
+2025-04-01T21:45:08.005Z: Model loaded successfully
+
+2025-04-01T21:46:09.746Z: Loading model: C:\Users\tyler\.lmstudio\models\lmstudio-community\Qwen2.5-Coder-7B-Instruct-GGUF\Qwen2.5-Coder-7B-Instruct-Q8_0.gguf
+
+2025-04-01T21:46:09.748Z: Model loaded successfully
+
+2025-04-01T21:46:10.179Z: Loading model: C:\Users\tyler\.lmstudio\models\lmstudio-community\Qwen2.5-Coder-7B-Instruct-GGUF\Qwen2.5-Coder-7B-Instruct-Q8_0.gguf
+
+2025-04-01T21:46:10.182Z: Model loaded successfully
+
+2025-04-01T21:46:45.982Z: Loading model: C:\Users\tyler\.lmstudio\models\lmstudio-community\Qwen2.5-Coder-7B-Instruct-GGUF\Qwen2.5-Coder-7B-Instruct-Q8_0.gguf
+
+2025-04-01T21:46:45.984Z: Model loaded successfully
+
+2025-04-01T21:46:46.448Z: Loading model: C:\Users\tyler\.lmstudio\models\lmstudio-community\Qwen2.5-Coder-7B-Instruct-GGUF\Qwen2.5-Coder-7B-Instruct-Q8_0.gguf
+
+2025-04-01T21:46:46.451Z: Model loaded successfully
+
+2025-04-01T21:47:35.882Z: Loading model: C:\Users\tyler\.lmstudio\models\lmstudio-community\gemma-3-4b-it-GGUF\mmproj-model-f16.gguf
+
+2025-04-01T21:47:35.883Z: Model loaded successfully
+
+2025-04-01T21:47:36.360Z: Loading model: C:\Users\tyler\.lmstudio\models\lmstudio-community\gemma-3-4b-it-GGUF\mmproj-model-f16.gguf
+
+2025-04-01T21:47:36.362Z: Model loaded successfully
+
+2025-04-01T21:48:37.940Z: Loading model: C:\Users\tyler\.lmstudio\models\lmstudio-community\gemma-3-4b-it-GGUF\mmproj-model-f16.gguf
+
+2025-04-01T21:48:37.943Z: Model loaded successfully
+
+2025-04-01T21:48:38.368Z: Loading model: C:\Users\tyler\.lmstudio\models\lmstudio-community\gemma-3-4b-it-GGUF\mmproj-model-f16.gguf
+
+2025-04-01T21:48:38.370Z: Model loaded successfully
+
+2025-04-01T21:50:49.517Z: Loading model: C:\Users\tyler\.lmstudio\models\lmstudio-community\gemma-3-4b-it-GGUF\gemma-3-4b-it-Q8_0.gguf
+
+2025-04-01T21:50:49.520Z: Model loaded successfully
+
+2025-04-01T21:50:50.040Z: Loading model: C:\Users\tyler\.lmstudio\models\lmstudio-community\gemma-3-4b-it-GGUF\gemma-3-4b-it-Q8_0.gguf
+
+2025-04-01T21:50:50.041Z: Model loaded successfully
+
+2025-04-01T21:52:12.382Z: Loading model: C:\Users\tyler\.lmstudio\models\lmstudio-community\gemma-3-4b-it-GGUF\gemma-3-4b-it-Q8_0.gguf
+
+2025-04-01T21:52:12.385Z: Model loaded successfully
+
+2025-04-01T21:53:32.887Z: Loading model: C:\Users\tyler\.lmstudio\models\lmstudio-community\gemma-3-4b-it-GGUF\mmproj-model-f16.gguf
+
+2025-04-01T21:53:32.889Z: Model loaded successfully
+
+2025-04-01T21:53:33.449Z: Loading model: C:\Users\tyler\.lmstudio\models\lmstudio-community\gemma-3-4b-it-GGUF\mmproj-model-f16.gguf
+
+2025-04-01T21:53:33.451Z: Model loaded successfully
+
+2025-04-01T21:54:30.798Z: Loading model: C:\Users\tyler\.lmstudio\models\lmstudio-community\Qwen2.5-Coder-7B-Instruct-GGUF\Qwen2.5-Coder-7B-Instruct-Q8_0.gguf
+
+2025-04-01T21:54:30.800Z: Model loaded successfully
+
+2025-04-01T21:54:35.504Z: Loading model: C:\Users\tyler\.lmstudio\models\lmstudio-community\gemma-3-4b-it-GGUF\mmproj-model-f16.gguf
+
+2025-04-01T21:54:35.506Z: Model loaded successfully
+
+2025-04-01T21:55:40.447Z: Loading model: C:\Users\tyler\.lmstudio\models\lmstudio-community\Qwen2.5-Coder-7B-Instruct-GGUF\Qwen2.5-Coder-7B-Instruct-Q8_0.gguf
+
+2025-04-01T21:55:40.449Z: Model loaded successfully
+
+2025-04-01T21:55:40.875Z: Loading model: C:\Users\tyler\.lmstudio\models\lmstudio-community\Qwen2.5-Coder-7B-Instruct-GGUF\Qwen2.5-Coder-7B-Instruct-Q8_0.gguf
+
+2025-04-01T21:55:40.878Z: Model loaded successfully
+
+2025-04-01T21:56:48.304Z: Loading model: C:\Users\tyler\.lmstudio\models\lmstudio-community\DeepSeek-R1-Distill-Qwen-7B-GGUF\DeepSeek-R1-Distill-Qwen-7B-Q4_K_M.gguf
+
+2025-04-01T21:56:48.305Z: Model loaded successfully
+
+2025-04-01T21:56:50.400Z: Loading model: C:\Users\tyler\.lmstudio\models\lmstudio-community\DeepSeek-R1-Distill-Qwen-7B-GGUF\DeepSeek-R1-Distill-Qwen-7B-Q4_K_M.gguf
+
+2025-04-01T21:56:50.402Z: Model loaded successfully
+
+2025-04-01T21:57:31.431Z: Loading model: C:\Users\tyler\.lmstudio\models\lmstudio-community\gemma-3-4b-it-GGUF\mmproj-model-f16.gguf
+
+2025-04-01T21:57:31.433Z: Model loaded successfully
+
+2025-04-01T21:57:32.130Z: Loading model: C:\Users\tyler\.lmstudio\models\lmstudio-community\gemma-3-4b-it-GGUF\mmproj-model-f16.gguf
+
+2025-04-01T21:57:32.133Z: Model loaded successfully
+
+2025-04-01T22:07:02.341Z: Loading model: C:\Users\tyler\.lmstudio\models\lmstudio-community\DeepSeek-R1-Distill-Qwen-7B-GGUF\DeepSeek-R1-Distill-Qwen-7B-Q4_K_M.gguf
+
+2025-04-01T22:07:02.343Z: Model loaded successfully
+
+2025-04-01T22:07:02.834Z: Loading model: C:\Users\tyler\.lmstudio\models\lmstudio-community\DeepSeek-R1-Distill-Qwen-7B-GGUF\DeepSeek-R1-Distill-Qwen-7B-Q4_K_M.gguf
+
+2025-04-01T22:07:02.836Z: Model loaded successfully
+
+2025-04-01T22:07:49.331Z: Loading model: C:\Users\tyler\.lmstudio\models\lmstudio-community\gemma-3-4b-it-GGUF\mmproj-model-f16.gguf
+
+2025-04-01T22:07:49.333Z: Model loaded successfully
+
+2025-04-01T22:08:42.427Z: Loading model: C:\Users\tyler\.lmstudio\models\lmstudio-community\gemma-3-4b-it-GGUF\mmproj-model-f16.gguf
+
+2025-04-01T22:08:42.428Z: Model loaded successfully
+
+2025-04-01T22:08:46.826Z: Loading model: C:\Users\tyler\.lmstudio\models\lmstudio-community\gemma-3-4b-it-GGUF\gemma-3-4b-it-Q8_0.gguf
+
+2025-04-01T22:08:46.827Z: Model loaded successfully
+
+2025-04-01T22:18:55.219Z: Loading model: C:\Users\tyler\.lmstudio\models\lmstudio-community\gemma-3-4b-it-GGUF\mmproj-model-f16.gguf
+
+2025-04-01T22:18:55.222Z: Model loaded successfully
+
+2025-04-01T22:56:16.951Z: Loading model: C:\Users\tyler\.lmstudio\models\lmstudio-community\Qwen2.5-Coder-7B-Instruct-GGUF\Qwen2.5-Coder-7B-Instruct-Q8_0.gguf
+
+2025-04-01T22:56:16.953Z: Model loaded successfully
+
+2025-04-01T22:56:17.754Z: Loading model: C:\Users\tyler\.lmstudio\models\lmstudio-community\Qwen2.5-Coder-7B-Instruct-GGUF\Qwen2.5-Coder-7B-Instruct-Q8_0.gguf
+
+2025-04-01T22:56:17.757Z: Model loaded successfully
+
+2025-04-01T22:56:49.166Z: Loading model: C:\Users\tyler\.lmstudio\models\lmstudio-community\gemma-3-4b-it-GGUF\mmproj-model-f16.gguf
+
+2025-04-01T22:56:49.168Z: Model loaded successfully
+
+2025-04-01T22:56:49.550Z: Loading model: C:\Users\tyler\.lmstudio\models\lmstudio-community\gemma-3-4b-it-GGUF\mmproj-model-f16.gguf
+
+2025-04-01T22:56:49.552Z: Model loaded successfully
+
+2025-04-01T22:58:47.513Z: Loading model: C:\Users\tyler\.lmstudio\models\lmstudio-community\Qwen2.5-Coder-7B-Instruct-GGUF\Qwen2.5-Coder-7B-Instruct-Q8_0.gguf
+
+2025-04-01T22:58:47.514Z: Model loaded successfully
+
+2025-04-01T22:58:53.319Z: Loading model: C:\Users\tyler\.lmstudio\models\lmstudio-community\gemma-3-4b-it-GGUF\mmproj-model-f16.gguf
+
+2025-04-01T22:58:53.321Z: Model loaded successfully
+
+2025-04-01T23:02:10.049Z: Loading model: C:\Users\tyler\.lmstudio\models\lmstudio-community\gemma-3-4b-it-GGUF\mmproj-model-f16.gguf
+
+2025-04-01T23:02:10.051Z: Model loaded successfully
+
+2025-04-01T23:02:10.469Z: Loading model: C:\Users\tyler\.lmstudio\models\lmstudio-community\gemma-3-4b-it-GGUF\mmproj-model-f16.gguf
+
+2025-04-01T23:02:10.470Z: Model loaded successfully
+
+2025-04-01T23:08:35.362Z: Loading model: C:\Users\tyler\.lmstudio\models\lmstudio-community\Qwen2.5-Coder-7B-Instruct-GGUF\Qwen2.5-Coder-7B-Instruct-Q8_0.gguf
+
+2025-04-01T23:08:35.364Z: Model loaded successfully
+
+2025-04-01T23:13:55.505Z: Loading model: C:\Users\tyler\.lmstudio\models\lmstudio-community\DeepSeek-R1-Distill-Qwen-7B-GGUF\DeepSeek-R1-Distill-Qwen-7B-Q4_K_M.gguf
+
+2025-04-01T23:13:55.508Z: Model loaded successfully
+
+2025-04-01T23:13:56.370Z: Loading model: C:\Users\tyler\.lmstudio\models\lmstudio-community\DeepSeek-R1-Distill-Qwen-7B-GGUF\DeepSeek-R1-Distill-Qwen-7B-Q4_K_M.gguf
+
+2025-04-01T23:13:56.372Z: Model loaded successfully
+
+2025-04-01T23:14:22.324Z: Loading model: C:\Users\tyler\.lmstudio\models\lmstudio-community\gemma-3-4b-it-GGUF\mmproj-model-f16.gguf
+
+2025-04-01T23:14:22.326Z: Model loaded successfully
+
+2025-04-01T23:14:46.287Z: Loading model: C:\Users\tyler\.lmstudio\models\lmstudio-community\gemma-3-4b-it-GGUF\mmproj-model-f16.gguf
+
+2025-04-01T23:14:46.290Z: Model loaded successfully
+
+2025-04-01T23:14:46.724Z: Loading model: C:\Users\tyler\.lmstudio\models\lmstudio-community\gemma-3-4b-it-GGUF\mmproj-model-f16.gguf
+
+2025-04-01T23:14:46.727Z: Model loaded successfully
+
+2025-04-01T23:15:09.794Z: Loading model: C:\Users\tyler\.lmstudio\models\lmstudio-community\gemma-3-4b-it-GGUF\mmproj-model-f16.gguf
+
+2025-04-01T23:15:09.796Z: Model loaded successfully
+
+2025-04-01T23:15:10.189Z: Loading model: C:\Users\tyler\.lmstudio\models\lmstudio-community\gemma-3-4b-it-GGUF\mmproj-model-f16.gguf
+
+2025-04-01T23:15:10.190Z: Model loaded successfully
+
+2025-04-01T23:15:24.105Z: Loading model: C:\Users\tyler\.lmstudio\models\lmstudio-community\gemma-3-4b-it-GGUF\mmproj-model-f16.gguf
+
+2025-04-01T23:15:24.107Z: Model loaded successfully
+
+2025-04-01T23:15:24.495Z: Loading model: C:\Users\tyler\.lmstudio\models\lmstudio-community\gemma-3-4b-it-GGUF\mmproj-model-f16.gguf
+
+2025-04-01T23:15:24.496Z: Model loaded successfully
+
+2025-04-01T23:15:56.888Z: Loading model: C:\Users\tyler\.lmstudio\models\lmstudio-community\gemma-3-4b-it-GGUF\mmproj-model-f16.gguf
+
+2025-04-01T23:15:56.892Z: Model loaded successfully
+
+2025-04-01T23:16:24.426Z: Loading model: C:\Users\tyler\.lmstudio\models\lmstudio-community\gemma-3-4b-it-GGUF\mmproj-model-f16.gguf
+
+2025-04-01T23:16:24.428Z: Model loaded successfully
+
+2025-04-01T23:16:24.838Z: Loading model: C:\Users\tyler\.lmstudio\models\lmstudio-community\gemma-3-4b-it-GGUF\mmproj-model-f16.gguf
+
+2025-04-01T23:16:24.839Z: Model loaded successfully
+
+2025-04-01T23:18:25.185Z: Loading model: C:\Users\tyler\.lmstudio\models\lmstudio-community\gemma-3-4b-it-GGUF\mmproj-model-f16.gguf
+
+2025-04-01T23:18:25.187Z: Model loaded successfully
+
+2025-04-01T23:18:37.914Z: Loading model: C:\Users\tyler\.lmstudio\models\lmstudio-community\gemma-3-4b-it-GGUF\mmproj-model-f16.gguf
+
+2025-04-01T23:18:37.916Z: Model loaded successfully
+
+2025-04-01T23:18:38.402Z: Loading model: C:\Users\tyler\.lmstudio\models\lmstudio-community\gemma-3-4b-it-GGUF\mmproj-model-f16.gguf
+
+2025-04-01T23:18:38.403Z: Model loaded successfully
+
+2025-04-01T23:18:58.982Z: Loading model: C:\Users\tyler\.lmstudio\models\lmstudio-community\DeepSeek-R1-Distill-Qwen-7B-GGUF\DeepSeek-R1-Distill-Qwen-7B-Q4_K_M.gguf
+
+2025-04-01T23:18:58.984Z: Model loaded successfully
+
+2025-04-01T23:19:08.309Z: Loading model: C:\Users\tyler\.lmstudio\models\lmstudio-community\gemma-3-4b-it-GGUF\mmproj-model-f16.gguf
+
+2025-04-01T23:19:08.311Z: Model loaded successfully
+
+2025-04-01T23:26:56.193Z: Loading model: C:\Users\tyler\.lmstudio\models\lmstudio-community\DeepSeek-R1-Distill-Qwen-7B-GGUF\DeepSeek-R1-Distill-Qwen-7B-Q4_K_M.gguf
+
+2025-04-01T23:26:56.195Z: Model loaded successfully
+
+2025-04-01T23:26:56.714Z: Loading model: C:\Users\tyler\.lmstudio\models\lmstudio-community\DeepSeek-R1-Distill-Qwen-7B-GGUF\DeepSeek-R1-Distill-Qwen-7B-Q4_K_M.gguf
+
+2025-04-01T23:26:56.715Z: Model loaded successfully
+
+2025-04-01T23:28:33.793Z: Loading model: C:\Users\tyler\.lmstudio\models\lmstudio-community\gemma-3-4b-it-GGUF\mmproj-model-f16.gguf
+
+2025-04-01T23:28:33.795Z: Model loaded successfully
+
+2025-04-01T23:28:34.373Z: Loading model: C:\Users\tyler\.lmstudio\models\lmstudio-community\gemma-3-4b-it-GGUF\mmproj-model-f16.gguf
+
+2025-04-01T23:28:34.374Z: Model loaded successfully
+
+2025-04-01T23:35:33.730Z: Loading model: C:\Users\tyler\.lmstudio\models\lmstudio-community\gemma-3-4b-it-GGUF\mmproj-model-f16.gguf
+
+2025-04-01T23:35:33.731Z: Model loaded successfully
+
+2025-04-01T23:43:39.337Z: Loading model: C:\Users\tyler\.lmstudio\models\lmstudio-community\gemma-3-4b-it-GGUF\mmproj-model-f16.gguf
+
+2025-04-01T23:43:39.339Z: Model loaded successfully
+
+2025-04-01T23:43:40.148Z: Loading model: C:\Users\tyler\.lmstudio\models\lmstudio-community\gemma-3-4b-it-GGUF\mmproj-model-f16.gguf
+
+2025-04-01T23:43:40.149Z: Model loaded successfully
+
+2025-04-01T23:45:14.336Z: Loading model: C:\Users\tyler\.lmstudio\models\lmstudio-community\gemma-3-4b-it-GGUF\mmproj-model-f16.gguf
+
+2025-04-01T23:45:14.338Z: Model loaded successfully
+
+2025-04-01T23:45:14.751Z: Loading model: C:\Users\tyler\.lmstudio\models\lmstudio-community\gemma-3-4b-it-GGUF\mmproj-model-f16.gguf
+
+2025-04-01T23:45:14.753Z: Model loaded successfully
+
+2025-04-01T23:47:19.302Z: Loading model: C:\Users\tyler\.lmstudio\models\lmstudio-community\gemma-3-4b-it-GGUF\mmproj-model-f16.gguf
+
+2025-04-01T23:47:19.304Z: Model loaded successfully
+
+2025-04-01T23:49:12.448Z: Loading model: C:\Users\tyler\.lmstudio\models\lmstudio-community\gemma-3-4b-it-GGUF\mmproj-model-f16.gguf
+
+2025-04-01T23:49:12.450Z: Model loaded successfully
+
+2025-04-01T23:49:12.827Z: Loading model: C:\Users\tyler\.lmstudio\models\lmstudio-community\gemma-3-4b-it-GGUF\mmproj-model-f16.gguf
+
+2025-04-01T23:49:12.828Z: Model loaded successfully
+
+2025-04-01T23:49:54.357Z: Loading model: C:\Users\tyler\.lmstudio\models\lmstudio-community\gemma-3-4b-it-GGUF\mmproj-model-f16.gguf
+
+2025-04-01T23:49:54.359Z: Model loaded successfully
+
+2025-04-01T23:49:54.613Z: Loading model: C:\Users\tyler\.lmstudio\models\lmstudio-community\gemma-3-4b-it-GGUF\mmproj-model-f16.gguf
+
+2025-04-01T23:49:54.615Z: Model loaded successfully
+
+2025-04-01T23:50:09.583Z: Loading model: C:\Users\tyler\.lmstudio\models\lmstudio-community\gemma-3-4b-it-GGUF\mmproj-model-f16.gguf
+
+2025-04-01T23:50:09.585Z: Model loaded successfully
+
+2025-04-01T23:50:36.526Z: Loading model: C:\Users\tyler\.lmstudio\models\lmstudio-community\gemma-3-4b-it-GGUF\mmproj-model-f16.gguf
+
+2025-04-01T23:50:36.528Z: Model loaded successfully
+
+2025-04-01T23:50:36.730Z: Loading model: C:\Users\tyler\.lmstudio\models\lmstudio-community\gemma-3-4b-it-GGUF\mmproj-model-f16.gguf
+
+2025-04-01T23:50:36.731Z: Model loaded successfully
+
+2025-04-01T23:51:12.355Z: Loading model: C:\Users\tyler\.lmstudio\models\lmstudio-community\gemma-3-4b-it-GGUF\mmproj-model-f16.gguf
+
+2025-04-01T23:51:12.357Z: Model loaded successfully
+
+2025-04-01T23:51:12.776Z: Loading model: C:\Users\tyler\.lmstudio\models\lmstudio-community\gemma-3-4b-it-GGUF\mmproj-model-f16.gguf
+
+2025-04-01T23:51:12.777Z: Model loaded successfully
+
+2025-04-01T23:51:35.063Z: Loading model: C:\Users\tyler\.lmstudio\models\lmstudio-community\gemma-3-4b-it-GGUF\mmproj-model-f16.gguf
+
+2025-04-01T23:51:35.065Z: Model loaded successfully
+
+2025-04-01T23:51:35.414Z: Loading model: C:\Users\tyler\.lmstudio\models\lmstudio-community\gemma-3-4b-it-GGUF\mmproj-model-f16.gguf
+
+2025-04-01T23:51:35.416Z: Model loaded successfully
+
+2025-04-01T23:51:52.355Z: Loading model: C:\Users\tyler\.lmstudio\models\lmstudio-community\gemma-3-4b-it-GGUF\mmproj-model-f16.gguf
+
+2025-04-01T23:51:52.357Z: Model loaded successfully
+
+2025-04-01T23:51:52.577Z: Loading model: C:\Users\tyler\.lmstudio\models\lmstudio-community\gemma-3-4b-it-GGUF\mmproj-model-f16.gguf
+
+2025-04-01T23:51:52.578Z: Model loaded successfully
+
+2025-04-01T23:52:09.028Z: Loading model: C:\Users\tyler\.lmstudio\models\lmstudio-community\gemma-3-4b-it-GGUF\mmproj-model-f16.gguf
+
+2025-04-01T23:52:09.030Z: Model loaded successfully
+
+2025-04-01T23:52:24.758Z: Loading model: C:\Users\tyler\.lmstudio\models\lmstudio-community\gemma-3-4b-it-GGUF\mmproj-model-f16.gguf
+
+2025-04-01T23:52:24.759Z: Model loaded successfully
+
+2025-04-01T23:55:09.392Z: Loading model: C:\Users\tyler\.lmstudio\models\lmstudio-community\gemma-3-4b-it-GGUF\mmproj-model-f16.gguf
+
+2025-04-01T23:55:09.393Z: Model loaded successfully
+
+2025-04-01T23:55:10.056Z: Loading model: C:\Users\tyler\.lmstudio\models\lmstudio-community\gemma-3-4b-it-GGUF\mmproj-model-f16.gguf
+
+2025-04-01T23:55:10.058Z: Model loaded successfully
+
+2025-04-02T00:00:14.998Z: Loading model: C:\Users\tyler\.lmstudio\models\lmstudio-community\gemma-3-4b-it-GGUF\mmproj-model-f16.gguf
+
+2025-04-02T00:00:14.999Z: Model loaded successfully
+
+2025-04-02T00:03:38.350Z: Loading model: C:\Users\tyler\.lmstudio\models\lmstudio-community\gemma-3-4b-it-GGUF\mmproj-model-f16.gguf
+
+2025-04-02T00:03:38.353Z: Model loaded successfully
+
+2025-04-02T00:03:38.791Z: Loading model: C:\Users\tyler\.lmstudio\models\lmstudio-community\gemma-3-4b-it-GGUF\mmproj-model-f16.gguf
+
+2025-04-02T00:03:38.793Z: Model loaded successfully
+
+2025-04-02T00:08:01.717Z: Loading model: C:\Users\tyler\.lmstudio\models\lmstudio-community\gemma-3-4b-it-GGUF\mmproj-model-f16.gguf
+
+2025-04-02T00:08:01.719Z: Model loaded successfully
+
+2025-04-02T00:49:44.729Z: Loading model: C:\Users\tyler\.lmstudio\models\lmstudio-community\gemma-3-4b-it-GGUF\mmproj-model-f16.gguf
+
+2025-04-02T00:49:44.732Z: Model loaded successfully
+
+2025-04-02T01:39:23.749Z: Loading model: C:\Users\tyler\.lmstudio\models\lmstudio-community\gemma-3-4b-it-GGUF\mmproj-model-f16.gguf
+
+2025-04-02T01:39:23.752Z: Model loaded successfully
+
+2025-04-02T02:12:34.062Z: Loading model: C:\Users\tyler\.lmstudio\models\lmstudio-community\gemma-3-4b-it-GGUF\mmproj-model-f16.gguf
+
+2025-04-02T02:12:34.063Z: Model loaded successfully
+
+2025-04-02T02:12:34.768Z: Loading model: C:\Users\tyler\.lmstudio\models\lmstudio-community\gemma-3-4b-it-GGUF\mmproj-model-f16.gguf
+
+2025-04-02T02:12:34.771Z: Model loaded successfully
+
+2025-04-02T02:13:11.269Z: Loading model: C:\Users\tyler\.lmstudio\models\lmstudio-community\DeepSeek-R1-Distill-Qwen-7B-GGUF\DeepSeek-R1-Distill-Qwen-7B-Q4_K_M.gguf
+
+2025-04-02T02:13:11.271Z: Model loaded successfully
+
+2025-04-02T02:13:14.789Z: Loading model: C:\Users\tyler\.lmstudio\models\lmstudio-community\DeepSeek-R1-Distill-Qwen-7B-GGUF\DeepSeek-R1-Distill-Qwen-7B-Q4_K_M.gguf
+
+2025-04-02T02:13:14.792Z: Model loaded successfully
+
+2025-04-02T02:19:41.899Z: Loading model: C:\Users\tyler\.lmstudio\models\lmstudio-community\DeepSeek-R1-Distill-Qwen-7B-GGUF\DeepSeek-R1-Distill-Qwen-7B-Q4_K_M.gguf
+
+2025-04-02T02:19:41.901Z: Model loaded successfully
+
+2025-04-02T02:19:42.805Z: Loading model: C:\Users\tyler\.lmstudio\models\lmstudio-community\DeepSeek-R1-Distill-Qwen-7B-GGUF\DeepSeek-R1-Distill-Qwen-7B-Q4_K_M.gguf
+
+2025-04-02T02:19:42.807Z: Model loaded successfully
+
+2025-04-02T02:23:29.956Z: Loading model: C:\Users\tyler\.lmstudio\models\lmstudio-community\DeepSeek-R1-Distill-Qwen-7B-GGUF\DeepSeek-R1-Distill-Qwen-7B-Q4_K_M.gguf
+
+2025-04-02T02:23:29.958Z: Model loaded successfully
+
+2025-04-02T02:23:30.992Z: Loading model: C:\Users\tyler\.lmstudio\models\lmstudio-community\DeepSeek-R1-Distill-Qwen-7B-GGUF\DeepSeek-R1-Distill-Qwen-7B-Q4_K_M.gguf
+
+2025-04-02T02:23:30.994Z: Model loaded successfully
+
+2025-04-02T02:26:13.411Z: Loading model: C:\Users\tyler\.lmstudio\models\lmstudio-community\DeepSeek-R1-Distill-Qwen-7B-GGUF\DeepSeek-R1-Distill-Qwen-7B-Q4_K_M.gguf
+
+2025-04-02T02:26:13.413Z: Model loaded successfully
+
+2025-04-02T02:26:14.732Z: Loading model: C:\Users\tyler\.lmstudio\models\lmstudio-community\DeepSeek-R1-Distill-Qwen-7B-GGUF\DeepSeek-R1-Distill-Qwen-7B-Q4_K_M.gguf
+
+2025-04-02T02:26:14.733Z: Model loaded successfully
+
+2025-04-02T02:29:56.116Z: Loading model: C:\Users\tyler\.lmstudio\models\lmstudio-community\DeepSeek-R1-Distill-Qwen-7B-GGUF\DeepSeek-R1-Distill-Qwen-7B-Q4_K_M.gguf
+
+2025-04-02T02:29:56.117Z: Model loaded successfully
+
+2025-04-02T02:29:56.845Z: Loading model: C:\Users\tyler\.lmstudio\models\lmstudio-community\DeepSeek-R1-Distill-Qwen-7B-GGUF\DeepSeek-R1-Distill-Qwen-7B-Q4_K_M.gguf
+
+2025-04-02T02:29:56.848Z: Model loaded successfully
+
+2025-04-02T02:33:58.572Z: Loading model: C:\Users\tyler\.lmstudio\models\lmstudio-community\gemma-3-4b-it-GGUF\mmproj-model-f16.gguf
+
+2025-04-02T02:33:58.574Z: Model loaded successfully
+
+2025-04-02T02:33:59.102Z: Loading model: C:\Users\tyler\.lmstudio\models\lmstudio-community\gemma-3-4b-it-GGUF\mmproj-model-f16.gguf
+
+2025-04-02T02:33:59.104Z: Model loaded successfully
+
+2025-04-02T02:46:25.279Z: Loading model: C:\Users\tyler\.lmstudio\models\lmstudio-community\gemma-3-4b-it-GGUF\mmproj-model-f16.gguf
+
+2025-04-02T02:46:25.281Z: Model loaded successfully
+
+2025-04-02T02:46:25.663Z: Loading model: C:\Users\tyler\.lmstudio\models\lmstudio-community\gemma-3-4b-it-GGUF\mmproj-model-f16.gguf
+
+2025-04-02T02:46:25.664Z: Model loaded successfully
+
+2025-04-02T02:49:21.632Z: Loading model: C:\Users\tyler\.lmstudio\models\lmstudio-community\DeepSeek-R1-Distill-Qwen-7B-GGUF\DeepSeek-R1-Distill-Qwen-7B-Q4_K_M.gguf
+
+2025-04-02T02:49:21.634Z: Model loaded successfully
+
+2025-04-02T02:49:22.713Z: Loading model: C:\Users\tyler\.lmstudio\models\lmstudio-community\DeepSeek-R1-Distill-Qwen-7B-GGUF\DeepSeek-R1-Distill-Qwen-7B-Q4_K_M.gguf
+
+2025-04-02T02:49:22.714Z: Model loaded successfully
+
+2025-04-02T02:50:13.013Z: Loading model: C:\Users\tyler\.lmstudio\models\lmstudio-community\gemma-3-4b-it-GGUF\gemma-3-4b-it-Q8_0.gguf
+
+2025-04-02T02:50:13.015Z: Model loaded successfully
+
+2025-04-02T02:50:15.227Z: Loading model: C:\Users\tyler\.lmstudio\models\lmstudio-community\DeepSeek-R1-Distill-Qwen-7B-GGUF\DeepSeek-R1-Distill-Qwen-7B-Q4_K_M.gguf
+
+2025-04-02T02:50:15.229Z: Model loaded successfully
+
+2025-04-02T02:55:16.708Z: Loading model: C:\Users\tyler\.lmstudio\models\lmstudio-community\DeepSeek-R1-Distill-Qwen-7B-GGUF\DeepSeek-R1-Distill-Qwen-7B-Q4_K_M.gguf
+
+2025-04-02T02:55:16.710Z: Model loaded successfully
+
+2025-04-02T02:55:17.381Z: Loading model: C:\Users\tyler\.lmstudio\models\lmstudio-community\DeepSeek-R1-Distill-Qwen-7B-GGUF\DeepSeek-R1-Distill-Qwen-7B-Q4_K_M.gguf
+
+2025-04-02T02:55:17.383Z: Model loaded successfully
+
+2025-04-02T03:07:06.810Z: Loading model: C:\Users\tyler\.lmstudio\models\lmstudio-community\gemma-3-4b-it-GGUF\mmproj-model-f16.gguf
+
+2025-04-02T03:07:06.813Z: Model loaded successfully
+
+2025-04-02T03:07:07.217Z: Loading model: C:\Users\tyler\.lmstudio\models\lmstudio-community\gemma-3-4b-it-GGUF\mmproj-model-f16.gguf
+
+2025-04-02T03:07:07.219Z: Model loaded successfully
+
+2025-04-02T03:13:49.713Z: Loading model: C:\Users\tyler\.lmstudio\models\lmstudio-community\DeepSeek-R1-Distill-Qwen-7B-GGUF\DeepSeek-R1-Distill-Qwen-7B-Q4_K_M.gguf
+
+2025-04-02T03:13:49.715Z: Model loaded successfully
+
+2025-04-02T03:13:50.600Z: Loading model: C:\Users\tyler\.lmstudio\models\lmstudio-community\DeepSeek-R1-Distill-Qwen-7B-GGUF\DeepSeek-R1-Distill-Qwen-7B-Q4_K_M.gguf
+
+2025-04-02T03:13:50.602Z: Model loaded successfully
+
+2025-04-02T03:22:01.856Z: Loading model: C:\Users\tyler\.lmstudio\models\lmstudio-community\Llama-3.2-1B-Instruct-Q8_0-GGUF\llama-3.2-1b-instruct-q8_0.gguf
+
+2025-04-02T03:22:01.860Z: Model loaded successfully
+
+2025-04-02T03:22:02.839Z: Loading model: C:\Users\tyler\.lmstudio\models\lmstudio-community\Llama-3.2-1B-Instruct-Q8_0-GGUF\llama-3.2-1b-instruct-q8_0.gguf
+
+2025-04-02T03:22:02.841Z: Model loaded successfully

@@ -1,0 +1,130 @@
+lm-terminal/
+├── PROJECT_STRUCTURE.txt
+├── bin
+│   ├── LibreHardwareMonitorCLI
+│   │   ├── LibreHardwareMonitorCLI.csproj
+│   │   ├── Program.cs
+│   │   ├── bin
+│   │   │   ├── Debug
+│   │   │   │   └── net6.0
+│   │   │   └── Release
+│   │   │       └── net6.0
+│   │   │           ├── HidSharp.dll
+│   │   │           ├── LibreHardwareMonitorCLI.deps.json
+│   │   │           ├── LibreHardwareMonitorCLI.dll
+│   │   │           ├── LibreHardwareMonitorCLI.exe
+│   │   │           ├── LibreHardwareMonitorCLI.pdb
+│   │   │           ├── LibreHardwareMonitorCLI.runtimeconfig.json
+│   │   │           ├── LibreHardwareMonitorLib.dll
+│   │   │           ├── System.CodeDom.dll
+│   │   │           ├── System.IO.Ports.dll
+│   │   │           ├── System.Management.dll
+│   │   │           ├── runtimes
+    │   │   │           │   ... (max depth reached)
+│   │   │           └── win-x64
+    │   │   │               ... (max depth reached)
+│   │   └── obj
+│   │       ├── Debug
+│   │       │   └── net6.0
+│   │       │       ├── LibreHardwareMonitorCLI.AssemblyInfo.cs
+│   │       │       ├── LibreHardwareMonitorCLI.AssemblyInfoInputs.cache
+│   │       │       ├── LibreHardwareMonitorCLI.GeneratedMSBuildEditorConfig.editorconfig
+│   │       │       ├── LibreHardwareMonitorCLI.assets.cache
+│   │       │       ├── LibreHardwareMonitorCLI.csproj.AssemblyReference.cache
+│   │       │       ├── ref
+    │   │       │       │   ... (max depth reached)
+│   │       │       └── refint
+    │   │       │           ... (max depth reached)
+│   │       ├── LibreHardwareMonitorCLI.csproj.nuget.dgspec.json
+│   │       ├── LibreHardwareMonitorCLI.csproj.nuget.g.props
+│   │       ├── LibreHardwareMonitorCLI.csproj.nuget.g.targets
+│   │       ├── Release
+│   │       │   └── net6.0
+│   │       │       ├── LibreHardwareMonitorCLI.AssemblyInfo.cs
+│   │       │       ├── LibreHardwareMonitorCLI.AssemblyInfoInputs.cache
+│   │       │       ├── LibreHardwareMonitorCLI.GeneratedMSBuildEditorConfig.editorconfig
+│   │       │       ├── LibreHardwareMonitorCLI.assets.cache
+│   │       │       ├── LibreHardwareMonitorCLI.csproj.AssemblyReference.cache
+│   │       │       ├── LibreHardwareMonitorCLI.csproj.CopyComplete
+│   │       │       ├── LibreHardwareMonitorCLI.csproj.CoreCompileInputs.cache
+│   │       │       ├── LibreHardwareMonitorCLI.csproj.FileListAbsolute.txt
+│   │       │       ├── LibreHardwareMonitorCLI.dll
+│   │       │       ├── LibreHardwareMonitorCLI.genruntimeconfig.cache
+│   │       │       ├── LibreHardwareMonitorCLI.pdb
+│   │       │       ├── apphost.exe
+│   │       │       ├── ref
+    │   │       │       │   ... (max depth reached)
+│   │       │       ├── refint
+    │   │       │       │   ... (max depth reached)
+│   │       │       └── win-x64
+    │   │       │           ... (max depth reached)
+│   │       ├── project.assets.json
+│   │       └── project.nuget.cache
+│   ├── bin
+│   │   ├── LibreHardwareMonitorCLI.exe
+│   │   ├── LibreHardwareMonitorCLI.pdb
+│   │   ├── MonoPosixHelper.dll
+│   │   └── libMonoPosixHelper.dll
+│   ├── ggml-base.dll
+│   ├── ggml-cpu.dll
+│   ├── ggml-rpc.dll
+│   ├── ggml.dll
+│   ├── llama-cli.exe
+│   ├── llama.dll
+│   └── llava_shared.dll
+├── crawl.py
+├── debug-llm.txt
+├── debug-main.txt
+├── forge.config.js
+├── nodemon.json
+├── package-lock.json
+├── package.json
+├── src
+│   ├── main
+│   │   ├── conversation-manager.js
+│   │   ├── gpu-monitor.js
+│   │   ├── hardware-monitor.js
+│   │   ├── html-generator.js
+│   │   ├── html-utils.js
+│   │   ├── html-validator.js
+│   │   ├── llm-service copy.js
+│   │   ├── llm-service.js
+│   │   ├── model-manager.js
+│   │   ├── process-isolator.js
+│   │   ├── safety-manager.js
+│   │   └── vram-guardian.js
+│   ├── main copy 2.js
+│   ├── main copy.js
+│   ├── main.js
+│   ├── preload
+│   │   └── preload.js
+│   ├── renderer
+│   │   ├── components
+│   │   │   ├── App.jsx
+│   │   │   ├── ChatContainer.jsx
+│   │   │   ├── ExploreView.jsx
+│   │   │   ├── Footer.jsx
+│   │   │   ├── Header.jsx
+│   │   │   ├── ModelsView.jsx
+│   │   │   ├── PaperView.jsx
+│   │   │   ├── SearchBar.jsx
+│   │   │   ├── SettingsDialog.jsx
+│   │   │   ├── Sidebar.jsx
+│   │   │   └── VramWarningDialog.jsx
+│   │   ├── index.html
+│   │   ├── index.js
+│   │   └── styles
+│   │       ├── Analytics.css
+│   │       ├── Brutalist.css
+│   │       ├── RetroFuturist.css
+│   │       ├── Terminal.css
+│   │       ├── index copy.css
+│   │       └── index.css
+│   ├── renderer.js
+│   └── webpages
+│       └── page1.html
+├── webpack.main.config.js
+├── webpack.plugins.config.js
+├── webpack.preload.config.js
+├── webpack.renderer.config.js
+└── webpack.rules.js

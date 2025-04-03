@@ -1,0 +1,6 @@
+{
+    "watch": ["src/main/*", "src/preload/*"],
+    "ext": "js,ts,jsx,tsx",
+    "ignore": ["node_modules", "out", ".webpack"],
+    "delay": "1000"
+  }

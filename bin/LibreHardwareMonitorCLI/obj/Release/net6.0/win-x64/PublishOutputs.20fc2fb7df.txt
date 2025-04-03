@@ -1,0 +1,4 @@
+C:\Users\tyler\Coding2025\ArxAIv\lm-terminal\bin\LibreHardwareMonitorCLI\bin\Release\net6.0\win-x64\publish\LibreHardwareMonitorCLI.pdb
+C:\Users\tyler\Coding2025\ArxAIv\lm-terminal\bin\LibreHardwareMonitorCLI\bin\Release\net6.0\win-x64\publish\MonoPosixHelper.dll
+C:\Users\tyler\Coding2025\ArxAIv\lm-terminal\bin\LibreHardwareMonitorCLI\bin\Release\net6.0\win-x64\publish\libMonoPosixHelper.dll
+C:\Users\tyler\Coding2025\ArxAIv\lm-terminal\bin\LibreHardwareMonitorCLI\bin\Release\net6.0\win-x64\publish\LibreHardwareMonitorCLI.exe
