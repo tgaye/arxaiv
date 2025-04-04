@@ -6,6 +6,7 @@ import ChatContainer from './ChatContainer';
 import ModelsView from './ModelsView';
 import PaperView from './PaperView';
 import ExploreView from './ExploreView';
+import CodeEditorView from './CodeEditorView'; // New import
 import Footer from './Footer';
 import SettingsDialog from './SettingsDialog';
 import VramWarningDialog from './VRamWarningDialog';
@@ -13,19 +14,24 @@ import VramWarningDialog from './VRamWarningDialog';
 const App = () => {
   const [conversations, setConversations] = useState([]);
   const [activeConversationId, setActiveConversationId] = useState(null);
-  const [activeView, setActiveView] = useState('models'); // 'chat', 'models', 'paper', or 'explore'
+  const [activeView, setActiveView] = useState('models'); // 'chat', 'models', 'paper', 'explore', or 'code-editor'
   const [models, setModels] = useState([]);
   const [selectedModel, setSelectedModel] = useState(null);
   const [isModelLoaded, setIsModelLoaded] = useState(false);
   const [modelDirectory, setModelDirectory] = useState('');
   const [showSettings, setShowSettings] = useState(false);
   const [currentPaper, setCurrentPaper] = useState(null);
-  const [exploreContent, setExploreContent] = useState(null); // Store generated HTML
+  const [exploreContent, setExploreContent] = useState(null);
   const [isGeneratingHTML, setIsGeneratingHTML] = useState(false);
   const [showVramWarning, setShowVramWarning] = useState(false);
   const [vramWarningInfo, setVramWarningInfo] = useState(null);
   const [isLoadingDefaultModel, setIsLoadingDefaultModel] = useState(false);
   const [gpuInfo, setGpuInfo] = useState(null);
+  const [openFiles, setOpenFiles] = useState([]); // Track open files in editor
+  const [activeFileIndex, setActiveFileIndex] = useState(-1); // Currently active file tab
+  const [currentDirectory, setCurrentDirectory] = useState(''); // Current directory in file explorer
+  const [directoryContents, setDirectoryContents] = useState([]);
+  const [isDirectoryLoading, setIsDirectoryLoading] = useState(false);
 
   useEffect(() => {
     const loadModels = async () => {
@@ -58,7 +64,7 @@ const App = () => {
       messages: [],
       tokens: 0,
       modelId: selectedModel.path,
-      summary: '', // Track conversation summary
+      summary: '',
     };
     
     setConversations([...conversations, newConversation]);
@@ -78,28 +84,39 @@ const App = () => {
   const handleShowPaperView = () => {
     setActiveView('paper');
   };
+  
+  // New handler for code editor view
+  const handleShowCodeEditor = () => {
+    setActiveView('code-editor');
+    
+    // Initialize directory if not set already
+    if (!currentDirectory) {
+      setCurrentDirectory('C:/Users');
+    } else {
+      // If directory is already set, load its contents
+      loadDirectoryContents(currentDirectory);
+    }
+  };
 
   const handleSelectModel = async (model) => {
     // First, check if the model has a size warning
     const gpuData = gpuInfo?.gpuInfo?.[0] || {};
-    const totalMemory = gpuData.memoryTotal || (12 * 1024 * 1024 * 1024); // 12GB default
+    const totalMemory = gpuData.memoryTotal || (12 * 1024 * 1024 * 1024);
     const usedMemory = gpuData.memoryUsed || 0;
     
     const isLargeModel = isModelTooLarge(model.size, totalMemory, usedMemory);
     
     if (isLargeModel) {
-      // Show VRAM warning before loading
       setVramWarningInfo({
         modelName: model.name,
         estimatedVram: calculateEstimatedVram(model.size),
-        availableVram: (totalMemory - usedMemory) / (1024 * 1024) // Convert to MB
+        availableVram: (totalMemory - usedMemory) / (1024 * 1024)
       });
-      setSelectedModel(model); // Set selected model for potential later use
+      setSelectedModel(model);
       setShowVramWarning(true);
-      return; // Stop here until user confirms
+      return;
     }
   
-    // Rest of the existing method remains the same
     try {
       const result = await window.api.loadModel(model.path);
       
@@ -107,10 +124,8 @@ const App = () => {
         setSelectedModel(model);
         setIsModelLoaded(true);
         
-        // Set as default model
         await window.api.setDefaultModel(model.path);
         
-        // Update models list to reflect new default
         const updatedModels = models.map(m => ({
           ...m,
           isDefault: m.path === model.path
@@ -123,6 +138,89 @@ const App = () => {
       }
     } catch (error) {
       console.error('Error loading model:', error);
+    }
+  };
+
+  // File editor handlers
+  const handleOpenFile = async (filePath) => {
+    try {
+      const fileContent = await window.api.readFile(filePath);
+      
+      // Check if file is already open
+      const existingIndex = openFiles.findIndex(file => file.path === filePath);
+      
+      if (existingIndex !== -1) {
+        // File already open, switch to it
+        setActiveFileIndex(existingIndex);
+      } else {
+        // Add new file to open files
+        const newFile = {
+          path: filePath,
+          name: filePath.split(/[/\\]/).pop(),
+          content: fileContent,
+          isDirty: false
+        };
+        
+        const newOpenFiles = [...openFiles, newFile];
+        setOpenFiles(newOpenFiles);
+        setActiveFileIndex(newOpenFiles.length - 1);
+      }
+    } catch (error) {
+      console.error('Error opening file:', error);
+    }
+  };
+  
+  const handleFileContentChange = (content) => {
+    if (activeFileIndex < 0) return;
+    
+    const updatedFiles = [...openFiles];
+    updatedFiles[activeFileIndex] = {
+      ...updatedFiles[activeFileIndex],
+      content,
+      isDirty: true
+    };
+    
+    setOpenFiles(updatedFiles);
+  };
+  
+  const handleCloseFile = (index) => {
+    // Remove file from openFiles
+    const newOpenFiles = [...openFiles];
+    newOpenFiles.splice(index, 1);
+    setOpenFiles(newOpenFiles);
+    
+    // Update active file index
+    if (activeFileIndex === index) {
+      // Was active file, set new active file
+      if (newOpenFiles.length > 0) {
+        const newIndex = Math.min(index, newOpenFiles.length - 1);
+        setActiveFileIndex(newIndex);
+      } else {
+        setActiveFileIndex(-1);
+      }
+    } else if (activeFileIndex > index) {
+      // Active file was after the closed one, decrement index
+      setActiveFileIndex(activeFileIndex - 1);
+    }
+  };
+  
+  const handleSaveFile = async (index) => {
+    const fileToSave = openFiles[index];
+    if (!fileToSave) return;
+    
+    try {
+      await window.api.writeFile(fileToSave.path, fileToSave.content);
+      
+      // Update file to show it's saved
+      const updatedFiles = [...openFiles];
+      updatedFiles[index] = {
+        ...updatedFiles[index],
+        isDirty: false
+      };
+      
+      setOpenFiles(updatedFiles);
+    } catch (error) {
+      console.error('Error saving file:', error);
     }
   };
 
@@ -196,7 +294,6 @@ const App = () => {
       console.error('Error loading model:', error);
     }
   };
-  
 
   const handleSendMessage = async (message) => {
     if (!activeConversationId || !selectedModel) return;
@@ -267,7 +364,7 @@ const App = () => {
         try {
           window.api.generateConversationSummary({
             conversationId: activeConversationId,
-            messages: [...activeConversation.messages, { role: 'assistant', content: chunk, id: aiMessageId }]
+            messages: [...activeConversation.messages, { role: 'assistant', content: '', id: aiMessageId }]
           });
         } catch (error) {
           console.error('Error generating summary:', error);
@@ -552,6 +649,26 @@ const App = () => {
     }, 800);
   };
 
+  const loadDirectoryContents = async (dirPath) => {
+    if (!dirPath) return;
+    
+    try {
+      setIsDirectoryLoading(true);
+      const contents = await window.api.listDirectory(dirPath);
+      setDirectoryContents(contents);
+    } catch (error) {
+      console.error('Error loading directory contents:', error);
+    } finally {
+      setIsDirectoryLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    if (currentDirectory && activeView === 'code-editor') {
+      loadDirectoryContents(currentDirectory);
+    }
+  }, [currentDirectory, activeView]);
+
   // Listen for conversation summary updates
   useEffect(() => {
     const unsubscribe = window.api.onConversationSummary(({ conversationId, summary }) => {
@@ -645,8 +762,16 @@ const App = () => {
         onNewChat={handleNewChat}
         onShowModels={handleShowModels}
         onShowPaperView={handleShowPaperView}
+        onShowCodeEditor={handleShowCodeEditor}
+        activeView={activeView}
+        // Pass these new props for the file explorer
+        currentDirectory={currentDirectory}
+        setCurrentDirectory={setCurrentDirectory}
+        directoryContents={directoryContents}
+        onOpenFile={handleOpenFile}
+        isLoadingDirectory={isDirectoryLoading}
       />
-        
+          
       <div className="main-content glow-effect">
         
         <Header 
@@ -680,6 +805,18 @@ const App = () => {
             html={exploreContent} 
             isLoading={isGeneratingHTML}
             conversationId={activeConversationId}
+          />
+        ) : activeView === 'code-editor' ? (
+          <CodeEditorView
+            currentDirectory={currentDirectory}
+            setCurrentDirectory={setCurrentDirectory}
+            openFiles={openFiles}
+            activeFileIndex={activeFileIndex}
+            onOpenFile={handleOpenFile}
+            onFileContentChange={handleFileContentChange}
+            onCloseFile={handleCloseFile}
+            onSaveFile={handleSaveFile}
+            onChangeActiveFile={setActiveFileIndex}
           />
         ) : null}
 

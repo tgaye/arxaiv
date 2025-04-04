@@ -1,3 +1,4 @@
+// webpack.renderer.config.js
 const rules = require('./webpack.rules');
 const plugins = require('./webpack.plugins.config.js');
 
@@ -8,6 +9,9 @@ module.exports = {
   plugins,
   resolve: {
     extensions: ['.js', '.jsx', '.css'],
+    fallback: {
+      "path": require.resolve("path-browserify")
+    }
   },
   devServer: {
     hot: true,

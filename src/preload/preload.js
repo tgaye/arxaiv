@@ -115,6 +115,13 @@ contextBridge.exposeInMainWorld('api', {
     });
   },
   
+  readFile: (filePath) => ipcRenderer.invoke('read-file', filePath),
+  writeFile: (filePath, content) => ipcRenderer.invoke('write-file', filePath, content),
+  listDirectory: (dirPath) => ipcRenderer.invoke('list-directory', dirPath),
+  getFileStats: (filePath) => ipcRenderer.invoke('get-file-stats', filePath),
+  createDirectory: (dirPath) => ipcRenderer.invoke('create-directory', dirPath),
+
+
   getGPUInfo: () => {
     console.log('Calling getGPUInfo from renderer');
     return ipcRenderer.invoke('get-gpu-info');

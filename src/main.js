@@ -1542,6 +1542,85 @@ and ending with </html>. Do not include any additional text or markdown markers.
 });
 
 
+ipcMain.handle('read-file', async (event, filePath) => {
+  try {
+    const content = await fs.readFile(filePath, 'utf8');
+    return content;
+  } catch (error) {
+    console.error(`Error reading file ${filePath}:`, error);
+    throw error;
+  }
+});
+
+ipcMain.handle('write-file', async (event, filePath, content) => {
+  try {
+    await fs.writeFile(filePath, content, 'utf8');
+    return { success: true };
+  } catch (error) {
+    console.error(`Error writing file ${filePath}:`, error);
+    throw error;
+  }
+});
+
+ipcMain.handle('list-directory', async (event, dirPath) => {
+  try {
+    const entries = await fs.readdir(dirPath, { withFileTypes: true });
+    
+    // Map directory entries to objects with additional info
+    const items = entries.map(entry => {
+      const entryPath = path.join(dirPath, entry.name);
+      
+      // Basic properties available without additional stats call
+      const item = {
+        name: entry.name,
+        path: entryPath,
+        isDirectory: entry.isDirectory(),
+      };
+      
+      return item;
+    });
+    
+    // Sort directories first, then files alphabetically
+    items.sort((a, b) => {
+      if (a.isDirectory && !b.isDirectory) return -1;
+      if (!a.isDirectory && b.isDirectory) return 1;
+      return a.name.localeCompare(b.name);
+    });
+    
+    return items;
+  } catch (error) {
+    console.error(`Error listing directory ${dirPath}:`, error);
+    throw error;
+  }
+});
+
+ipcMain.handle('get-file-stats', async (event, filePath) => {
+  try {
+    const stats = await fs.stat(filePath);
+    return {
+      size: stats.size,
+      created: stats.birthtime,
+      modified: stats.mtime,
+      isDirectory: stats.isDirectory(),
+      isFile: stats.isFile()
+    };
+  } catch (error) {
+    console.error(`Error getting stats for ${filePath}:`, error);
+    throw error;
+  }
+});
+
+ipcMain.handle('create-directory', async (event, dirPath) => {
+  try {
+    await fs.mkdir(dirPath, { recursive: true });
+    return { success: true, path: dirPath };
+  } catch (error) {
+    console.error(`Error creating directory ${dirPath}:`, error);
+    throw error;
+  }
+});
+
+
 
 // Fallback HTML generation (simplified version that doesn't use LLM)
 
