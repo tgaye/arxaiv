@@ -25,7 +25,8 @@ const App = () => {
   const [showVramWarning, setShowVramWarning] = useState(false);
   const [vramWarningInfo, setVramWarningInfo] = useState(null);
   const [isLoadingDefaultModel, setIsLoadingDefaultModel] = useState(false);
-  
+  const [gpuInfo, setGpuInfo] = useState(null);
+
   useEffect(() => {
     const loadModels = async () => {
       const modelsList = await window.api.getModels();
@@ -79,11 +80,31 @@ const App = () => {
   };
 
   const handleSelectModel = async (model) => {
-    setSelectedModel(model);
+    // First, check if the model has a size warning
+    const gpuData = gpuInfo?.gpuInfo?.[0] || {};
+    const totalMemory = gpuData.memoryTotal || (12 * 1024 * 1024 * 1024); // 12GB default
+    const usedMemory = gpuData.memoryUsed || 0;
     
+    const isLargeModel = isModelTooLarge(model.size, totalMemory, usedMemory);
+    
+    if (isLargeModel) {
+      // Show VRAM warning before loading
+      setVramWarningInfo({
+        modelName: model.name,
+        estimatedVram: calculateEstimatedVram(model.size),
+        availableVram: (totalMemory - usedMemory) / (1024 * 1024) // Convert to MB
+      });
+      setSelectedModel(model); // Set selected model for potential later use
+      setShowVramWarning(true);
+      return; // Stop here until user confirms
+    }
+  
+    // Rest of the existing method remains the same
     try {
       const result = await window.api.loadModel(model.path);
+      
       if (result.success) {
+        setSelectedModel(model);
         setIsModelLoaded(true);
         
         // Set as default model
@@ -97,13 +118,6 @@ const App = () => {
         setModels(updatedModels);
         
         handleNewChat();
-      } else if (result.vramIssue) {
-        // Show VRAM warning
-        setVramWarningInfo({
-          modelName: model.name,
-          error: result.error
-        });
-        setShowVramWarning(true);
       } else {
         console.error('Failed to load model:', result.error);
       }
@@ -112,36 +126,77 @@ const App = () => {
     }
   };
 
-  const handleProceedWithVramWarning = async () => {
-    setShowVramWarning(false);
-    if (selectedModel) {
-      try {
-        // Force GPU reset
-        await window.api.forceGpuReset();
-        
-        // Try loading again with force flag
-        const result = await window.api.loadModel(selectedModel.path, { force: true });
-        if (result.success) {
-          setIsModelLoaded(true);
-          handleNewChat();
-          
-          // Set as default model
-          await window.api.setDefaultModel(selectedModel.path);
-          
-          // Update models list to reflect new default
-          const updatedModels = models.map(m => ({
-            ...m,
-            isDefault: m.path === selectedModel.path
-          }));
-          setModels(updatedModels);
-        } else {
-          console.error('Failed to force load model:', result.error);
-        }
-      } catch (error) {
-        console.error('Error force loading model:', error);
+  const isModelTooLarge = (modelSize, totalMemory, usedMemory) => {
+    // Parse model size with unit conversion
+    const sizeMatch = modelSize.match(/(\d+(\.\d+)?)\s*([A-Z]{2})/);
+    let modelSizeBytes = 0;
+  
+    if (sizeMatch) {
+      const value = parseFloat(sizeMatch[1]);
+      const unit = sizeMatch[3];
+  
+      if (unit === 'GB') {
+        modelSizeBytes = value * 1024 * 1024 * 1024;
+      } else if (unit === 'MB') {
+        modelSizeBytes = value * 1024 * 1024;
       }
     }
+  
+    // Calculate available memory
+    const availableMemory = totalMemory - usedMemory;
+  
+    // Check if model is more than 50% of available memory
+    return modelSizeBytes > (availableMemory * 0.4);
   };
+  
+  // Helper function to calculate estimated VRAM
+  const calculateEstimatedVram = (modelSize) => {
+    const sizeMatch = modelSize.match(/(\d+(\.\d+)?)\s*([A-Z]{2})/);
+    if (sizeMatch) {
+      const value = parseFloat(sizeMatch[1]);
+      const unit = sizeMatch[3];
+      
+      // Rough estimation: multiply by 1.5 for VRAM requirement
+      return unit === 'GB' 
+        ? Math.round(value * 1024 * 1.5) 
+        : Math.round(value * 1.5);
+    }
+    return 0;
+  };
+
+  const handleProceedWithVramWarning = async () => {
+    // Close the warning dialog
+    setShowVramWarning(false);
+    
+    if (!vramWarningInfo) return;
+  
+    try {
+      // Attempt to load the model
+      const result = await window.api.loadModel(selectedModel.path);
+      
+      if (result.success) {
+        setSelectedModel(selectedModel);
+        setIsModelLoaded(true);
+        
+        // Set as default model
+        await window.api.setDefaultModel(selectedModel.path);
+        
+        // Update models list to reflect new default
+        const updatedModels = models.map(m => ({
+          ...m,
+          isDefault: m.path === selectedModel.path
+        }));
+        setModels(updatedModels);
+        
+        handleNewChat();
+      } else {
+        console.error('Failed to load model:', result.error);
+      }
+    } catch (error) {
+      console.error('Error loading model:', error);
+    }
+  };
+  
 
   const handleSendMessage = async (message) => {
     if (!activeConversationId || !selectedModel) return;
@@ -640,8 +695,9 @@ const App = () => {
           isOpen={showVramWarning}
           onClose={() => setShowVramWarning(false)}
           onProceed={handleProceedWithVramWarning}
-          modelName={vramWarningInfo?.modelName || 'Selected model'}
-          errorMessage={vramWarningInfo?.error || 'High VRAM usage detected'}
+          modelName={vramWarningInfo?.modelName}
+          estimatedVram={vramWarningInfo?.estimatedVram}
+          availableVram={vramWarningInfo?.availableVram}
         />
                 
         <Footer />

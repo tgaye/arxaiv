@@ -211,7 +211,16 @@ const ModelsView = ({ models, onSelectModel, modelDirectory, onSelectModelDirect
       <div 
         key={model.path} 
         className={`model-card ${isLargeModel ? 'model-card-warning' : ''} ${model.isDefault ? 'model-card-default' : ''}`}
-        onClick={() => onSelectModel(model)}
+        onClick={() => {
+          // If it's a large model, set as selected but trigger warning first
+          if (isLargeModel) {
+            // Trigger the VRAM warning in the parent component
+            onSelectModel(model, true);
+          } else {
+            // Normal model selection
+            onSelectModel(model);
+          }
+        }}
       >
         <div className="model-card-header">
           <h3>{model.name}</h3>

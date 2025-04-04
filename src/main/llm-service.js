@@ -322,6 +322,8 @@ class LLMService {
 
           '--repeat-penalty', '1.1',
 
+          '--batch-size', '512',
+
           '-c', '2048',          // Context size
 
           '--no-mmap',           // Safer memory mapping

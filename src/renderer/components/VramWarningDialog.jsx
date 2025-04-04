@@ -2,7 +2,14 @@
 import React from 'react';
 import { IconAlertTriangle, IconX } from '@tabler/icons-react';
 
-const VramWarningDialog = ({ isOpen, onClose, onProceed, modelName, estimatedVram, availableVram }) => {
+const VramWarningDialog = ({ 
+  isOpen, 
+  onClose, 
+  onProceed, 
+  modelName, 
+  estimatedVram, 
+  availableVram 
+}) => {
   if (!isOpen) return null;
   
   const usagePercentage = (estimatedVram / availableVram) * 100;

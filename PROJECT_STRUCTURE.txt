@@ -412,6 +412,7 @@ lm-terminal/
 │   │   ├── llm-service.js
 │   │   ├── model-manager.js
 │   │   ├── process-isolator.js
+│   │   ├── resource-throttle.js
 │   │   ├── safety-manager.js
 │   │   └── vram-guardian.js
 │   ├── main copy 2.js
@@ -433,7 +434,8 @@ lm-terminal/
 │   │   │   ├── SearchBar.jsx
 │   │   │   ├── SettingsDialog.jsx
 │   │   │   ├── Sidebar.jsx
-│   │   │   └── VramWarningDialog.jsx
+│   │   │   ├── VramWarningDialog.jsx
+│   │   │   └── safety-monitor.js
 │   │   ├── index.html
 │   │   ├── index.js
 │   │   └── styles

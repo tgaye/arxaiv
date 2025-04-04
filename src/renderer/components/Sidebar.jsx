@@ -13,14 +13,18 @@ const Sidebar = ({
     <div className="sidebar">
       <div className="sidebar-header">
         <div style={{ display: 'flex', gap: '8px' }}>
-          <button className="nav-item" onClick={onNewChat} style={{ padding: '6px', borderRadius: '4px' }} title="New Chat">
-            <IconPlus size={22} />
+          <button className="nav-item" onClick={onNewChat} style={{ padding: '4px', borderRadius: '4px' }} title="New Chat">
+            <IconPlus size={16} />
           </button>
-          <button className="nav-item" onClick={onShowModels} style={{ padding: '6px', borderRadius: '4px' }} title="Models">
-            <IconDatabase size={22} />
+          <button className="nav-item" onClick={onShowModels} style={{ padding: '4px', borderRadius: '4px' }} title="Models">
+            <IconDatabase size={16} />
           </button>
-          <button className="nav-item" onClick={onShowPaperView} style={{ padding: '6px', borderRadius: '4px' }} title="Research Papers">
-            <IconArticle size={22} />
+          <button className="nav-item" onClick={onShowPaperView} style={{ padding: '4px', borderRadius: '4px' }} title="Research Papers">
+            <IconArticle size={16} />
+          </button>
+          
+          <button className="nav-item" onClick={onShowPaperView} style={{ padding: '4px', borderRadius: '4px' }} title="File Explorer">
+            <IconArticle size={16} />
           </button>
         </div>
       </div>
