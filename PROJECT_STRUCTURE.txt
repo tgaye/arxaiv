@@ -425,15 +425,20 @@ lm-terminal/
 │   │   │   ├── App copy.jsx
 │   │   │   ├── App.jsx
 │   │   │   ├── ChatContainer.jsx
+│   │   │   ├── CodeEditorView.jsx
 │   │   │   ├── ContextFilesManager.jsx
+│   │   │   ├── Editor.jsx
 │   │   │   ├── ExploreView.jsx
+│   │   │   ├── FileExplorer.jsx
 │   │   │   ├── Footer.jsx
 │   │   │   ├── Header.jsx
 │   │   │   ├── ModelsView.jsx
+│   │   │   ├── MonokaiTheme.js
 │   │   │   ├── PaperView.jsx
 │   │   │   ├── SearchBar.jsx
 │   │   │   ├── SettingsDialog.jsx
 │   │   │   ├── Sidebar.jsx
+│   │   │   ├── TabBar.jsx
 │   │   │   ├── VramWarningDialog.jsx
 │   │   │   └── safety-monitor.js
 │   │   ├── index.html
