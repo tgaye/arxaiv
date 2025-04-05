@@ -1,9 +1,5 @@
 import React, { useMemo, useRef, useState, useEffect } from 'react';
-import * as pdfjsLib from 'pdfjs-dist';
 import MonacoWrapper from './MonacoWrapper';
-
-// Set the workerSrc to a CDN-hosted version or static path you control
-pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.4.120/pdf.worker.min.js';
 
 const isImageFile = (filename) => /\.(png|jpe?g|gif|bmp|webp|svg)$/i.test(filename);
 const isPdfFile = (filename) => /\.pdf$/i.test(filename);
@@ -56,41 +52,6 @@ const SmartEditor = ({ file, onContentChange }) => {
     else img.onload = autoZoom;
   }, [blobUrl, isImage]);
 
-  // 📄 Render PDF First Page
-  useEffect(() => {
-    if (!isPdf || !blobUrl || !canvasRef.current) return;
-
-    const render = async () => {
-      try {
-        const loadingTask = pdfjsLib.getDocument(blobUrl);
-        const pdf = await loadingTask.promise;
-        const page = await pdf.getPage(1);
-
-        const viewport = page.getViewport({ scale: 1.0 });
-        const scale = (containerRef.current.offsetWidth * 0.8) / viewport.width;
-        setZoom(scale);
-
-        const scaledViewport = page.getViewport({ scale });
-        const canvas = canvasRef.current;
-        const context = canvas.getContext('2d');
-
-        canvas.height = scaledViewport.height;
-        canvas.width = scaledViewport.width;
-        setPdfPageSize({ width: scaledViewport.width, height: scaledViewport.height });
-
-        const renderContext = {
-          canvasContext: context,
-          viewport: scaledViewport,
-        };
-
-        await page.render(renderContext).promise;
-      } catch (err) {
-        console.error('PDF render failed:', err);
-      }
-    };
-
-    render();
-  }, [blobUrl, isPdf]);
 
   const handleWheel = (e) => {
     if (e.ctrlKey) {
