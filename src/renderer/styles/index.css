@@ -1057,6 +1057,7 @@ body {
 }
 
 /* App Branding */
+/* ArxAIv */
 .app-branding {
   font-size: 26px;
   font-weight: 700;
@@ -2649,4 +2650,39 @@ body {
 .select-directory-button:hover {
   background-color: var(--accent-secondary);
   transform: translateY(-1px);
+}
+
+.monaco-editor .margin {
+  width: 40px !important;
+  background-color: #2a272b;
+}
+
+
+.monaco-editor .margin-view-overlays {
+  font-family: 'JetBrains Mono', monospace !important;
+  font-size: 11px !important;
+  line-height: 18px !important;
+  transform: none !important; /* prevent Y-shift ghosting */
+  will-change: auto !important;
+  opacity: 1 !important;
+}
+
+.monaco-editor .line-numbers {
+  width: 100% !important;
+  text-align: center !important; /* fix alignment to center */
+  color: #a1a1a1cc !important;
+  font-weight: normal;
+  font-style: normal;
+  opacity: 0.85 !important;
+  transform: none !important; /* fix glitchy top fade */
+  display: flex;
+  align-items: center; /* vertical alignment fix */
+  justify-content: center;
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+.monaco-editor .line-numbers.active-line-number {
+  color: #f8f8f2 !important;
+  font-weight: bold;
 }

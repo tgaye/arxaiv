@@ -12,7 +12,7 @@ module.exports = [
   },
   {
     test: /\.css$/,
-    use: [{ loader: 'style-loader' }, { loader: 'css-loader' }],
+    use: ['style-loader', 'css-loader'],
   },
   {
     test: /\.(png|jpe?g|gif|svg|ico)$/i,
@@ -21,5 +21,5 @@ module.exports = [
   {
     test: /\.(woff|woff2|eot|ttf|otf)$/i,
     type: 'asset/resource',
-  },
+  }
 ];

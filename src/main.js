@@ -175,22 +175,15 @@ const createWindow = async () => {
 
 
     mainWindow.webContents.session.webRequest.onHeadersReceived((details, callback) => {
-
       callback({
-
         responseHeaders: {
-
           ...details.responseHeaders,
-
           'Content-Security-Policy': [
-            "default-src * 'self' 'unsafe-inline' 'unsafe-eval' data: blob:; script-src * 'self' 'unsafe-inline' 'unsafe-eval' data: blob:; connect-src * 'self' ws: wss:; style-src * 'self' 'unsafe-inline'; frame-src * 'self' data: blob:; img-src * 'self' data: blob:; font-src * 'self' data: blob:; object-src 'self' data: blob:; media-src * 'self' data: blob:;"
+            "default-src * 'self' 'unsafe-inline' 'unsafe-eval' data: blob: file:; script-src * 'self' 'unsafe-inline' 'unsafe-eval' data: blob: file:; worker-src * 'self' 'unsafe-inline' 'unsafe-eval' data: blob: file:; connect-src * 'self' ws: wss:; style-src * 'self' 'unsafe-inline'; frame-src * 'self' data: blob: file:; img-src * 'self' data: blob: file:; font-src * 'self' data: blob:; object-src 'self' data: blob:; media-src * 'self' data: blob:;"
           ]
         }
-
       });
-
     });
-
 
 
     

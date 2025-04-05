@@ -373,7 +373,7 @@ const App = () => {
           
           <div class="browser-content">
             <div class="welcome-page">
-              <div class="logo">ArxAIv</div>
+              <div class="logo"></div>
               <h1 class="welcome-title">Welcome to ArxAIv Browser</h1>
               <p class="welcome-subtitle">Explore the fascinating world of AI-powered research and conversation visualization</p>
               

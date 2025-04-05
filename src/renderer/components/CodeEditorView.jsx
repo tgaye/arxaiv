@@ -1,8 +1,9 @@
 // src/renderer/components/CodeEditorView.jsx
 import React, { useState, useEffect } from 'react';
 import TabBar from './TabBar';
-import Editor from './Editor';
+import MonacoWrapper from './MonacoWrapper';
 import { IconRefresh, IconFolderPlus, IconFilePlus } from '@tabler/icons-react';
+import SmartEditor from './SmartEditor';
 
 const CodeEditorView = ({
   currentDirectory,
@@ -107,7 +108,7 @@ const CodeEditorView = ({
           onSaveFile={onSaveFile}
         />
         
-        <Editor 
+        <SmartEditor 
           file={openFiles[activeFileIndex]}
           onContentChange={onFileContentChange}
         />
