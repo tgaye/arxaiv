@@ -38,6 +38,7 @@ module.exports = {
   devServer: {
     hot: true,
     liveReload: true,
-    client: false
+    client: false,
+    overlay: false,
   }
 };

@@ -943,6 +943,28 @@ ipcMain.handle('send-message', async (event, { message, conversationId }) => {
 });
 
 
+ipcMain.handle('select-code-directory', async () => {
+  try {
+    if (isShuttingDown) return { success: false, error: 'Application is shutting down' };
+
+    const defaultPath = 'C:/Users';
+
+    const result = await dialog.showOpenDialog(mainWindow, {
+      properties: ['openDirectory'],
+      title: 'Select Code Folder',
+      defaultPath
+    });
+
+    if (!result.canceled) {
+      return { success: true, path: result.filePaths[0] };
+    }
+    return { success: false };
+  } catch (error) {
+    logError('Error selecting code directory', error);
+    return { success: false, error: error.message };
+  }
+});
+
 
 // Model directory selection
 

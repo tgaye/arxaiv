@@ -90,6 +90,7 @@ ipcRenderer.on('app-shutting-down', () => {
 contextBridge.exposeInMainWorld('api', {
   getModels: () => ipcRenderer.invoke('get-models'),
   setDefaultModel: (modelPath) => ipcRenderer.invoke('set-default-model', modelPath),
+  selectCodeDirectory: () => ipcRenderer.invoke('select-code-directory'), 
   loadModel: (modelPath) => {
     console.log('Calling loadModel from renderer');
     return new Promise((resolve, reject) => {

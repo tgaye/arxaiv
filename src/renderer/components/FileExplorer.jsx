@@ -18,44 +18,58 @@ const FileExplorer = ({
   setCurrentDirectory,
   directoryContents,
   onOpenFile,
-  isLoading
+  isLoading,
+  storageKey = 'lastDirectory' 
 }) => {
   const [expandedFolders, setExpandedFolders] = useState({});
   const [folderContents, setFolderContents] = useState({});
+  const [activeFolder, setActiveFolder] = useState(null);
 
-  // Add useEffect to handle empty directory
   useEffect(() => {
-    if (currentDirectory === '') {
-      // If no directory is set, default to a basic path
+    const savedEditorDir = localStorage.getItem('lastEditorDirectory');
+    if (savedEditorDir && (!currentDirectory || currentDirectory === '')) {
+      setCurrentDirectory(savedEditorDir);
+    } else if (currentDirectory === '') {
       setCurrentDirectory('C:/Users');
     }
-  }, [currentDirectory, setCurrentDirectory]);
+  }, []);
+
+  useEffect(() => {
+    if (currentDirectory) {
+      localStorage.setItem(storageKey, currentDirectory);
+    }
+  }, [currentDirectory]);
 
   const toggleFolder = async (folderPath) => {
+    const isExpanding = !expandedFolders[folderPath];
     const newExpandedFolders = { ...expandedFolders };
-    
-    if (expandedFolders[folderPath]) {
-      // Collapse folder
-      newExpandedFolders[folderPath] = false;
-    } else {
-      // Expand folder
-      newExpandedFolders[folderPath] = true;
-      
-      // Load folder contents if we haven't yet
-      if (!folderContents[folderPath]) {
-        try {
-          const contents = await window.api.listDirectory(folderPath);
-          setFolderContents({
-            ...folderContents,
-            [folderPath]: contents
-          });
-        } catch (error) {
-          console.error(`Error loading contents for ${folderPath}:`, error);
-        }
+
+    newExpandedFolders[folderPath] = isExpanding;
+
+    if (isExpanding) {
+      const parts = folderPath.split(path.sep);
+      let current = '';
+      parts.forEach((part) => {
+        if (!part) return;
+        current = current ? path.join(current, part) : part;
+        newExpandedFolders[current] = true;
+      });
+    }
+
+    if (!folderContents[folderPath]) {
+      try {
+        const contents = await window.api.listDirectory(folderPath);
+        setFolderContents({
+          ...folderContents,
+          [folderPath]: contents
+        });
+      } catch (error) {
+        console.error(`Error loading contents for ${folderPath}:`, error);
       }
     }
-    
+
     setExpandedFolders(newExpandedFolders);
+    setActiveFolder(folderPath);
   };
 
   const handleFileClick = (filePath) => {
@@ -69,16 +83,49 @@ const FileExplorer = ({
     }
   };
 
+  const handleDirectoryNavigatorClick = async () => {
+    try {
+      const result = await window.api.selectCodeDirectory(); // 👈 NEW ipc route
+      if (result.success && result.path) {
+        setCurrentDirectory(result.path);
+        setActiveFolder(result.path);
+        
+        setExpandedFolders({});
+        setFolderContents({});
+  
+        const contents = await window.api.listDirectory(result.path);
+        setFolderContents({
+          [result.path]: contents
+        });
+  
+        // Save last code directory
+        localStorage.setItem('lastEditorDirectory', result.path); // 🔑 uniquely named
+      }
+    } catch (error) {
+      console.error('Error selecting code directory:', error);
+    }
+  };
+
   const getFileIcon = (fileName) => {
     const extension = path.extname(fileName).toLowerCase();
-    
-    if (['.js', '.jsx', '.ts', '.tsx', '.py', '.java', '.c', '.cpp', '.cs'].includes(extension)) {
+
+    if ([
+      '.js', '.jsx', '.ts', '.tsx', '.py', '.java', '.c', '.cpp', '.cs'
+    ].includes(extension)) {
       return <IconFileCode size={14} />;
-    } else if (['.txt', '.md', '.json', '.xml', '.html', '.css'].includes(extension)) {
+    } else if ([
+      '.txt', '.md', '.json', '.xml', '.html', '.css'
+    ].includes(extension)) {
       return <IconFileText size={14} />;
     } else {
       return <IconFile size={14} />;
     }
+  };
+
+  const isInExpandedPath = (itemPath) => {
+    return Object.keys(expandedFolders).some(expandedPath => {
+      return expandedFolders[expandedPath] && itemPath.startsWith(expandedPath + path.sep);
+    });
   };
 
   return (
@@ -88,15 +135,27 @@ const FileExplorer = ({
           <p>No directory selected</p>
           <button 
             className="select-directory-button"
-            onClick={() => setCurrentDirectory('C:/Users')}
+            onClick={handleDirectoryNavigatorClick}
           >
             Select Directory
           </button>
         </div>
       ) : (
         <>
-          <div className="directory-navigator">
-            <button className="nav-up-button" onClick={navigateUp} title="Navigate Up">
+          <div 
+            className="directory-navigator"
+            onClick={handleDirectoryNavigatorClick}
+            style={{ cursor: 'pointer' }}
+            title="Click to change directory"
+          >
+            <button 
+              className="nav-up-button" 
+              onClick={(e) => {
+                e.stopPropagation();
+                navigateUp();
+              }} 
+              title="Navigate Up"
+            >
               <IconArrowUp size={12} />
             </button>
             <div className="current-directory" title={currentDirectory}>
@@ -105,7 +164,7 @@ const FileExplorer = ({
                 : currentDirectory}
             </div>
           </div>
-          
+
           <div className="file-list">
             {isLoading ? (
               <div className="loading-indicator">
@@ -127,6 +186,8 @@ const FileExplorer = ({
                   expandedFolders={expandedFolders}
                   allFolderContents={folderContents}
                   depth={0}
+                  isExpanded={expandedFolders[item.path] || isInExpandedPath(item.path)}
+                  activeFolder={activeFolder}
                 />
               ))
             )}
@@ -146,34 +207,39 @@ const FileItem = ({
   getFileIcon, 
   expandedFolders,
   allFolderContents,
-  depth 
+  depth,
+  isExpanded,
+  activeFolder
 }) => {
-  // Reduce indentation for deep files
   const paddingLeft = 4 + (depth * 8);
-  const maxNameLength = 18 - depth; // Reduce max name length based on depth
-  
+  const maxNameLength = 18 - depth;
+  const isActive = activeFolder === item.path;
+
   if (item.isDirectory) {
     const displayName = item.name.length > maxNameLength 
       ? item.name.substring(0, maxNameLength - 3) + '...' 
       : item.name;
-      
+
     return (
       <div className="directory-item">
         <div 
-          className={`directory-header ${expanded ? 'expanded' : ''}`}
-          style={{ paddingLeft: `${paddingLeft}px` }}
+          className={`directory-header ${expanded ? 'expanded' : ''} ${isActive ? 'active' : ''}`}
+          style={{ 
+            paddingLeft: `${paddingLeft}px`,
+            color: isExpanded ? 'var(--text-primary)' : 'var(--accent)' 
+          }}
           onClick={() => onToggleFolder(item.path)}
-          title={item.name} // Show full name on hover
+          title={item.name}
         >
-          <span className="directory-chevron">
+          <span className="directory-chevron" style={{ color: 'inherit' }}>
             {expanded ? <IconChevronDown size={12} /> : <IconChevronRight size={12} />}
           </span>
-          <span className="directory-icon">
+          <span className="directory-icon" style={{ color: 'inherit' }}>
             {expanded ? <IconFolderOpen size={14} /> : <IconFolder size={14} />}
           </span>
           <span className="directory-name">{displayName}</span>
         </div>
-        
+
         {expanded && (
           <div className="directory-contents">
             {folderContents.map((subItem) => (
@@ -188,6 +254,8 @@ const FileItem = ({
                 expandedFolders={expandedFolders}
                 allFolderContents={allFolderContents}
                 depth={depth + 1}
+                isExpanded={true}
+                activeFolder={activeFolder}
               />
             ))}
           </div>
@@ -198,15 +266,18 @@ const FileItem = ({
     const displayName = item.name.length > maxNameLength 
       ? item.name.substring(0, maxNameLength - 3) + '...' 
       : item.name;
-      
+
     return (
       <div 
         className="file-item"
-        style={{ paddingLeft: `${paddingLeft + 12}px` }}
+        style={{ 
+          paddingLeft: `${paddingLeft + 12}px`,
+          color: isExpanded ? 'var(--text-primary)' : 'var(--accent)'
+        }}
         onClick={() => onFileClick(item.path)}
-        title={item.name} // Show full name on hover
+        title={item.name}
       >
-        <span className="file-icon">
+        <span className="file-icon" style={{ color: 'inherit' }}>
           {getFileIcon(item.name)}
         </span>
         <span className="file-name">{displayName}</span>
