@@ -1,165 +1,137 @@
-import React, { useMemo, useRef, useState, useEffect } from 'react';
-import MonacoWrapper from './MonacoWrapper';
+import React, { useEffect, useRef, useState } from 'react';
 
-const isImageFile = (filename) => /\.(png|jpe?g|gif|bmp|webp|svg)$/i.test(filename);
-const isPdfFile = (filename) => /\.pdf$/i.test(filename);
+const isImage = (filename = '') => /\.(png|jpe?g|gif|bmp|webp)$/i.test(filename);
+const isText = (filename = '') => /\.(txt|md|json|xml|html|css|js|jsx|ts|tsx|py|java|c|cpp|cs)$/i.test(filename);
 
-const SmartEditor = ({ file, onContentChange }) => {
+const SmartEditor = ({ file }) => {
   const containerRef = useRef(null);
-  const canvasRef = useRef(null);
   const imageRef = useRef(null);
-
-  const [zoom, setZoom] = useState(1.0);
-  const [dragging, setDragging] = useState(false);
+  const [zoom, setZoom] = useState(1);
   const [offset, setOffset] = useState({ x: 0, y: 0 });
-  const [lastMouse, setLastMouse] = useState(null);
-  const [pdfPageSize, setPdfPageSize] = useState({ width: 0, height: 0 });
+  const [dragging, setDragging] = useState(false);
+  const [start, setStart] = useState(null);
 
-  const isImage = useMemo(() => file?.name && isImageFile(file.name), [file]);
-  const isPdf = useMemo(() => file?.name && isPdfFile(file.name), [file]);
-
-  const blobUrl = useMemo(() => {
-    if (!file) return null;
-    try {
-      if (file.path && !file.content) return `file://${file.path}`;
-      if (typeof file.content === 'string') {
-        return file.content.startsWith('data:')
-          ? file.content
-          : `data:application/pdf;base64,${file.content}`;
-      }
-      return URL.createObjectURL(new Blob([file.content]));
-    } catch (err) {
-      console.error('Failed to create blob URL:', err);
-      return null;
-    }
+  useEffect(() => {
+    console.log('[SmartEditor] Received file:', file);
   }, [file]);
 
-  // 🖼️ Auto-zoom image
   useEffect(() => {
-    if (!isImage || !imageRef.current || !containerRef.current) return;
+    if (!file || !isImage(file.name)) return;
 
     const img = imageRef.current;
     const container = containerRef.current;
 
-    const autoZoom = () => {
-      const naturalWidth = img.naturalWidth;
-      const scale = (container.offsetWidth * 0.8) / naturalWidth;
+    const autoScale = () => {
+      if (!img || !container) return;
+      const containerWidth = container.offsetWidth;
+      const targetWidth = containerWidth * 0.8;
+      const scale = targetWidth / img.naturalWidth;
       setZoom(scale);
       setOffset({ x: 0, y: 0 });
     };
 
-    if (img.complete) autoZoom();
-    else img.onload = autoZoom;
-  }, [blobUrl, isImage]);
-
+    if (img.complete) autoScale();
+    else img.onload = autoScale;
+  }, [file]);
 
   const handleWheel = (e) => {
     if (e.ctrlKey) {
       e.preventDefault();
       const delta = e.deltaY < 0 ? 0.1 : -0.1;
-      setZoom((z) => Math.min(5, Math.max(0.1, z + delta)));
+      setZoom((z) => Math.max(0.1, Math.min(5, z + delta)));
     }
   };
 
-  const onMouseDown = (e) => {
+  const handleMouseDown = (e) => {
     e.preventDefault();
     setDragging(true);
-    setLastMouse({ x: e.clientX, y: e.clientY });
+    setStart({ x: e.clientX, y: e.clientY });
     containerRef.current.style.cursor = 'grabbing';
   };
 
-  const onMouseMove = (e) => {
-    if (!dragging || !lastMouse) return;
-    const dx = e.clientX - lastMouse.x;
-    const dy = e.clientY - lastMouse.y;
+  const handleMouseMove = (e) => {
+    if (!dragging || !start) return;
+    const dx = e.clientX - start.x;
+    const dy = e.clientY - start.y;
     setOffset((prev) => ({ x: prev.x + dx, y: prev.y + dy }));
-    setLastMouse({ x: e.clientX, y: e.clientY });
+    setStart({ x: e.clientX, y: e.clientY });
   };
 
-  const onMouseUp = () => {
+  const handleMouseUp = () => {
     setDragging(false);
-    containerRef.current.style.cursor = 'default';
-    setLastMouse(null);
+    setStart(null);
+    containerRef.current.style.cursor = 'grab';
   };
 
-  if (!file) return null;
+  if (!file) {
+    return <div className="empty-state">No file selected</div>;
+  }
 
-  // 🖼️ Image View
-  if (isImage && blobUrl) {
+  if (isImage(file.name)) {
+    console.log('[SmartEditor] Attempting to render image:', file.name);
     return (
       <div
         ref={containerRef}
         onWheel={handleWheel}
-        onMouseDown={onMouseDown}
-        onMouseMove={onMouseMove}
-        onMouseUp={onMouseUp}
-        onMouseLeave={onMouseUp}
+        onMouseDown={handleMouseDown}
+        onMouseMove={handleMouseMove}
+        onMouseUp={handleMouseUp}
+        onMouseLeave={handleMouseUp}
         style={{
           width: '100%',
           height: '100%',
           overflow: 'hidden',
           background: '#1e1e1e',
           position: 'relative',
-          userSelect: 'none',
-          cursor: dragging ? 'grabbing' : 'grab',
+          cursor: 'grab',
+          userSelect: 'none'
         }}
       >
         <img
           ref={imageRef}
-          src={blobUrl}
+          src={`file://${file.path}`}
           alt={file.name}
           style={{
             position: 'absolute',
-            left: `calc(50% + ${offset.x}px - ${imageRef.current?.naturalWidth * zoom / 2}px)`,
-            top: `calc(50% + ${offset.y}px - ${imageRef.current?.naturalHeight * zoom / 2}px)`,
+            left: `calc(50% + ${offset.x}px - ${(imageRef.current?.naturalWidth || 0) * zoom / 2}px)` || '0',
+            top: `calc(50% + ${offset.y}px - ${(imageRef.current?.naturalHeight || 0) * zoom / 2}px)` || '0',
             transform: `scale(${zoom})`,
             transformOrigin: 'top left',
-            imageRendering: 'pixelated',
             maxWidth: 'none',
             maxHeight: 'none',
-            pointerEvents: 'none',
+            imageRendering: 'pixelated',
+            pointerEvents: 'none'
           }}
+          onLoad={() => console.log('[SmartEditor] Image loaded:', file.path)}
+          onError={() => console.warn('[SmartEditor] Failed to load image:', file.path)}
         />
       </div>
     );
   }
 
-  // 📄 PDF View
-  if (isPdf && blobUrl) {
+  if (isText(file.name)) {
+    console.log('[SmartEditor] Rendering text editor for:', file.name);
     return (
-      <div
-        ref={containerRef}
-        onWheel={handleWheel}
-        onMouseDown={onMouseDown}
-        onMouseMove={onMouseMove}
-        onMouseUp={onMouseUp}
-        onMouseLeave={onMouseUp}
-        style={{
-          width: '100%',
-          height: '100%',
-          overflow: 'hidden',
-          background: '#1e1e1e',
-          position: 'relative',
-          userSelect: 'none',
-          cursor: dragging ? 'grabbing' : 'grab',
-        }}
-      >
-        <canvas
-          ref={canvasRef}
-          style={{
-            position: 'absolute',
-            left: `calc(50% + ${offset.x}px - ${pdfPageSize.width / 2}px)`,
-            top: `calc(50% + ${offset.y}px - ${pdfPageSize.height / 2}px)`,
-            transform: `scale(${zoom})`,
-            transformOrigin: 'top left',
-          }}
-        />
+      <div className="text-editor-fallback">
+        <pre style={{
+          color: '#f8f8f2',
+          backgroundColor: '#272822',
+          padding: '10px',
+          fontFamily: 'JetBrains Mono, monospace',
+          fontSize: '13px',
+          whiteSpace: 'pre-wrap',
+          overflowX: 'auto'
+        }}>{file.content}</pre>
       </div>
     );
   }
 
-  // 📝 Code View
-  return <MonacoWrapper file={file} onContentChange={onContentChange} />;
+  console.warn('[SmartEditor] Unsupported file type:', file.name);
+  return (
+    <div className="unsupported-preview">
+      <p>Cannot preview this file type: {file.name}</p>
+    </div>
+  );
 };
 
 export default SmartEditor;
