@@ -1,18 +1,27 @@
+// src/renderer/components/SmartEditor.jsx
 import React, { useEffect, useRef, useState } from 'react';
+import MonacoWrapper from './MonacoWrapper';
 
 const isImage = (filename = '') => /\.(png|jpe?g|gif|bmp|webp)$/i.test(filename);
-const isText = (filename = '') => /\.(txt|md|json|xml|html|css|js|jsx|ts|tsx|py|java|c|cpp|cs)$/i.test(filename);
+const isText = (filename = '') => {
+  if (!filename) return false;
+  const base = filename.split('/').pop();
+  const hiddenAsText = ['.gitignore', '.env', '.eslintrc', '.prettierrc', '.npmrc'];
+  return /\.(txt|md|json|xml|html|css|js|jsx|ts|tsx|py|java|c|cpp|cs)$/i.test(filename) || hiddenAsText.includes(base);
+};
 
-const SmartEditor = ({ file }) => {
+const SmartEditor = ({ file, onContentChange }) => {
   const containerRef = useRef(null);
   const imageRef = useRef(null);
   const [zoom, setZoom] = useState(1);
   const [offset, setOffset] = useState({ x: 0, y: 0 });
   const [dragging, setDragging] = useState(false);
   const [start, setStart] = useState(null);
+  const [showError, setShowError] = useState(false);
 
   useEffect(() => {
     console.log('[SmartEditor] Received file:', file);
+    setShowError(false);
   }, [file]);
 
   useEffect(() => {
@@ -68,7 +77,6 @@ const SmartEditor = ({ file }) => {
   }
 
   if (isImage(file.name)) {
-    console.log('[SmartEditor] Attempting to render image:', file.name);
     return (
       <div
         ref={containerRef}
@@ -110,26 +118,27 @@ const SmartEditor = ({ file }) => {
   }
 
   if (isText(file.name)) {
-    console.log('[SmartEditor] Rendering text editor for:', file.name);
-    return (
-      <div className="text-editor-fallback">
-        <pre style={{
-          color: '#f8f8f2',
-          backgroundColor: '#272822',
-          padding: '10px',
-          fontFamily: 'JetBrains Mono, monospace',
-          fontSize: '13px',
-          whiteSpace: 'pre-wrap',
-          overflowX: 'auto'
-        }}>{file.content}</pre>
-      </div>
-    );
+    return <MonacoWrapper file={file} onContentChange={onContentChange} />;
   }
 
-  console.warn('[SmartEditor] Unsupported file type:', file.name);
   return (
-    <div className="unsupported-preview">
-      <p>Cannot preview this file type: {file.name}</p>
+    <div
+      style={{
+        backgroundColor: '#10141e',
+        color: '#ef4444',
+        fontFamily: 'JetBrains Mono, monospace',
+        fontSize: '13px',
+        padding: '16px',
+        border: '1px solid rgba(54, 249, 246, 0.2)',
+        borderRadius: '6px',
+        margin: '20px',
+        maxWidth: '400px',
+        boxShadow: '0 4px 20px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(54, 249, 246, 0.1) inset',
+        animation: 'pulse 1.5s ease-in-out infinite'
+      }}
+    >
+      <strong>Unsupported File</strong>
+      <p>Cannot preview this file type: <code>{file.name}</code></p>
     </div>
   );
 };
